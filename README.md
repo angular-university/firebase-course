@@ -1,7 +1,7 @@
 
 ## Serverless Angular with Firebase & AngularFire Course
 
-This repository contains the code of the [Serverless Angular with Firebase & AngularFire Course](https://angular-university.io/course/angular-material-course).
+This repository contains the code of the [Serverless Angular with Firebase & AngularFire Course](https://angular-university.io/course/firebase-course).
 
 This course repository is updated to Angular v7, and there is a  package-lock.json file available, for avoiding semantic versioning installation issues.
 
