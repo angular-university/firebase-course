@@ -131,15 +131,14 @@ If you are looking for the Angular Advanced Course, the repo with the full code 
 
 ![Angular Advanced Library Laboratory Course: Build Your Own Library](https://angular-academy.s3.amazonaws.com/thumbnails/advanced_angular-small-v3.png)
 
-## Angular Ngrx Reactive Extensions Architecture Course
 
-If you are looking for the Angular Ngrx Reactive Extensions Architecture Course code, the repo with the full code can be found here:
+## RxJs and Reactive Patterns Angular Architecture Course
 
-[Angular Ngrx Reactive Extensions Architecture Course](https://angular-university.io/course/angular2-ngrx)
+If you are looking for the RxJs and Reactive Patterns Angular Architecture Course code, the repo with the full code can be found here:
 
-[Github repo for this course](https://github.com/angular-university/ngrx-course)
+[RxJs and Reactive Patterns Angular Architecture Course](https://angular-university.io/course/reactive-angular-architecture-course)
 
-![Angular Ngrx Course](https://angular-academy.s3.amazonaws.com/thumbnails/ngrx-angular.png)
+![RxJs and Reactive Patterns Angular Architecture Course](https://s3-us-west-1.amazonaws.com/angular-academy/blog/images/rxjs-reactive-patterns-small.png)
 
 
 ## Complete Typescript Course - Build A REST API
