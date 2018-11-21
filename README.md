@@ -1,5 +1,5 @@
 
-## Angular Material Course
+## Serverless Angular with Firebase & AngularFire Course
 
 This repository contains the code of the [Serverless Angular with Firebase & AngularFire Course](https://angular-university.io/course/angular-material-course).
 
