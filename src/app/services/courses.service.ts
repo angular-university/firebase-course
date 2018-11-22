@@ -1,7 +1,7 @@
 
 
 import {Injectable} from "@angular/core";
-import {NEVER, never, Observable, of} from 'rxjs';
+import {from, NEVER, never, Observable, of} from 'rxjs';
 import {Course} from "../model/course";
 import {map} from "rxjs/operators";
 import {Lesson} from "../model/lesson";

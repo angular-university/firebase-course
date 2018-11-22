@@ -1,6 +1,6 @@
 <mat-sidenav-container fullscreen>
 
-    <mat-sidenav #start>
+    <mat-sidenav #start (click)="start.close()">
         <mat-nav-list>
 
             <a mat-list-item routerLink="/">

@@ -6,7 +6,8 @@ export const COURSES: any = {
     iconUrl: 'https://s3-us-west-1.amazonaws.com/angular-university/course-images/serverless-angular-small.png',
     longDescription: 'Serveless Angular with Firestore, Firebase Storage & Hosting, Firebase Cloud Functions & AngularFire',
     lessonsCount: 10,
-    category: 'INTERMEDIATE'
+    category: 'BEGINNER',
+    seqNo: 0,
   },
 
   2: {
@@ -15,7 +16,8 @@ export const COURSES: any = {
     iconUrl: 'https://s3-us-west-1.amazonaws.com/angular-university/course-images/angular-core-in-depth-small.png',
     longDescription: 'A detailed walk-through of the most important part of Angular - the Core and Common modules',
     lessonsCount: 10,
-    category: 'INTERMEDIATE'
+    category: 'BEGINNER',
+    seqNo: 2,
   },
 
   3: {
@@ -25,17 +27,19 @@ export const COURSES: any = {
     courseListIcon: 'https://angular-academy.s3.amazonaws.com/main-logo/main-page-logo-small-hat.png',
     longDescription: 'Understand the RxJs Observable pattern, learn the RxJs Operators via practical examples',
     category: 'BEGINNER',
-    lessonsCount: 10
+    lessonsCount: 10,
+    seqNo: 3,
   },
 
   4: {
     id: 4,
     description: 'NgRx In Depth',
-    iconUrl: 'https://s3-us-west-1.amazonaws.com/angular-university/course-images/rxjs-in-practice-course.png',
+    iconUrl: 'https://s3-us-west-1.amazonaws.com/angular-university/course-images/angular-ngrx-course.png',
     courseListIcon: 'https://angular-academy.s3.amazonaws.com/main-logo/main-page-logo-small-hat.png',
     longDescription: 'Learn the modern Ngrx Ecosystem, including Store, Effects, Router Store, Ngrx Entity, Dev Tools and Schematics.',
-    category: 'INTERMEDIATE',
-    lessonsCount: 10
+    category: 'BEGINNER',
+    lessonsCount: 10,
+    seqNo: 4,
   },
 
   5: {
@@ -45,7 +49,8 @@ export const COURSES: any = {
     courseListIcon: 'https://angular-academy.s3.amazonaws.com/main-logo/main-page-logo-small-hat.png',
     longDescription: 'Establish a solid layer of fundamentals, learn what\'s under the hood of Angular',
     category: 'BEGINNER',
-    lessonsCount: 10
+    lessonsCount: 10,
+    seqNo: 5,
   },
 
   6: {
@@ -55,7 +60,8 @@ export const COURSES: any = {
     iconUrl: 'https://s3-us-west-1.amazonaws.com/angular-university/course-images/security-cover-small-v2.png',
     courseListIcon: 'https://s3-us-west-1.amazonaws.com/angular-university/course-images/lock-v2.png',
     category: 'ADVANCED',
-    lessonsCount: 11
+    lessonsCount: 11,
+    seqNo: 6,
   },
 
   7: {
@@ -65,7 +71,8 @@ export const COURSES: any = {
     iconUrl: 'https://s3-us-west-1.amazonaws.com/angular-university/course-images/angular-pwa-course.png',
     courseListIcon: 'https://s3-us-west-1.amazonaws.com/angular-university/course-images/alien.png',
     category: 'ADVANCED',
-    lessonsCount: 8
+    lessonsCount: 8,
+    seqNo: 7
   },
 
   8: {
@@ -74,7 +81,8 @@ export const COURSES: any = {
     longDescription: 'Learn Advanced Angular functionality typically used in Library Development. Advanced Components, Directives, Testing, Npm',
     iconUrl: 'https://angular-academy.s3.amazonaws.com/thumbnails/advanced_angular-small-v3.png',
     courseListIcon: 'https://angular-academy.s3.amazonaws.com/thumbnails/angular-advanced-lesson-icon.png',
-    category: 'ADVANCED'
+    category: 'ADVANCED',
+    seqNo: 8
   },
 
   9: {
@@ -83,7 +91,8 @@ export const COURSES: any = {
     longDescription: 'Complete Guide to Typescript From Scratch: Learn the language in-depth and use it to build a Node REST API.',
     iconUrl: 'https://angular-academy.s3.amazonaws.com/thumbnails/typescript-2-small.png',
     courseListIcon: 'https://angular-academy.s3.amazonaws.com/thumbnails/typescript-2-lesson.png',
-    category: 'BEGINNER'
+    category: 'BEGINNER',
+    seqNo: 9
   },
 
   10: {
@@ -92,7 +101,8 @@ export const COURSES: any = {
     longDescription: 'Learn the core RxJs Observable Pattern as well and many other Design Patterns for building Reactive Angular Applications.',
     iconUrl: 'https://s3-us-west-1.amazonaws.com/angular-academy/blog/images/rxjs-reactive-patterns-small.png',
     courseListIcon: 'https://angular-academy.s3.amazonaws.com/course-logos/observables_rxjs.png',
-    category: 'BEGINNER'
+    category: 'BEGINNER',
+    seqNo: 10
   },
 
   11: {
@@ -100,7 +110,8 @@ export const COURSES: any = {
     description: 'Angular Material Course',
     iconUrl: 'https://s3-us-west-1.amazonaws.com/angular-university/course-images/material_design.png',
     longDescription: 'Build Applications with the official Angular Widget Library',
-    category: 'ADVANCED'
+    category: 'BEGINNER',
+    seqNo: 11
   }
 
 };

@@ -1,8 +1,7 @@
+
 import {COURSES, findLessonsForCourse} from './db-data';
 
-const firebase = require('firebase');
-
-require('firebase/firestore');
+import * as firebase from 'firebase';
 
 var config = {
   apiKey: 'AIzaSyDAdoefqX5OqjkD3BkW25ZAL6XYZMo4Vz8',
@@ -13,16 +12,16 @@ var config = {
   messagingSenderId: '170806523820'
 };
 
-
 console.log("Uploading data to the database with the following config:\n");
+
 console.log(JSON.stringify(config));
 
 console.log("\n\n\n\nMake sure that this is your own database, so that you have write access to it.\n\n\n");
 
-
 firebase.initializeApp(config);
 
-var db = firebase.firestore();
+const db = firebase.firestore();
+
 
 const settings = {timestampsInSnapshots: true};
 
@@ -39,6 +38,7 @@ async function uploadData() {
 
 
   Object.values(COURSES)
+    .sort((c1:any, c2:any) => c1.seqNo - c2.seqNo)
     .forEach(async (course:any) => {
 
       const newCourse = removeId(course);
