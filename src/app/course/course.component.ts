@@ -1,12 +1,11 @@
-import {AfterViewInit, Component, ElementRef, OnInit, ViewChild} from '@angular/core';
+import {AfterViewInit, Component, OnInit, ViewChild} from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
-import {MatPaginator, MatTableDataSource} from "@angular/material";
+import {MatPaginator} from "@angular/material";
 import {Course} from "../model/course";
 import {CoursesService} from "../services/courses.service";
-import {debounceTime, distinctUntilChanged, startWith, tap, delay} from 'rxjs/operators';
 
-import {fromEvent, merge} from 'rxjs';
 import {LessonsDataSource} from "../services/lessons.datasource";
+import {tap} from 'rxjs/operators';
 
 
 @Component({
