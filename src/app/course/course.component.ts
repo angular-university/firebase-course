@@ -1,6 +1,6 @@
 import {AfterViewInit, Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
-import {MatPaginator, MatSort, MatTableDataSource} from "@angular/material";
+import {MatPaginator, MatTableDataSource} from "@angular/material";
 import {Course} from "../model/course";
 import {CoursesService} from "../services/courses.service";
 import {debounceTime, distinctUntilChanged, startWith, tap, delay} from 'rxjs/operators';
@@ -24,10 +24,6 @@ export class CourseComponent implements OnInit, AfterViewInit {
 
     @ViewChild(MatPaginator) paginator: MatPaginator;
 
-    @ViewChild(MatSort) sort: MatSort;
-
-    @ViewChild('input') input: ElementRef;
-
     constructor(private route: ActivatedRoute,
                 private coursesService: CoursesService) {
 
@@ -39,15 +35,13 @@ export class CourseComponent implements OnInit, AfterViewInit {
 
         this.dataSource = new LessonsDataSource(this.coursesService);
 
-        this.dataSource.loadLessons(this.course.id, 'asc', 0, 3);
+        this.dataSource.loadLessons(this.course.id, 0, 3);
 
     }
 
     ngAfterViewInit() {
 
-        this.sort.sortChange.subscribe(() => this.paginator.pageIndex = 0);
-
-        merge(this.sort.sortChange, this.paginator.page)
+        this.paginator.page
         .pipe(
             tap(() => this.loadLessonsPage())
         )
@@ -58,7 +52,6 @@ export class CourseComponent implements OnInit, AfterViewInit {
     loadLessonsPage() {
         this.dataSource.loadLessons(
             this.course.id,
-            this.sort.direction,
             this.paginator.pageIndex,
             this.paginator.pageSize);
     }
