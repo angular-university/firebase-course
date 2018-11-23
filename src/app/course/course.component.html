@@ -4,12 +4,6 @@
 
     <img class="course-thumbnail" [src]="course?.iconUrl">
 
-    <mat-form-field>
-
-        <input matInput placeholder="Search lessons" #input>
-
-    </mat-form-field>
-
     <div class="spinner-container" *ngIf="dataSource.loading$ | async">
 
         <mat-spinner></mat-spinner>

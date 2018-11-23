@@ -8,6 +8,7 @@ export const COURSES: any = {
     lessonsCount: 10,
     category: 'BEGINNER',
     seqNo: 0,
+    url: "serverless-angular"
   },
 
   2: {
@@ -18,6 +19,7 @@ export const COURSES: any = {
     lessonsCount: 10,
     category: 'BEGINNER',
     seqNo: 2,
+    url: "angular-core-course"
   },
 
   3: {
@@ -29,6 +31,7 @@ export const COURSES: any = {
     category: 'BEGINNER',
     lessonsCount: 10,
     seqNo: 3,
+    url: "rxjs-course"
   },
 
   4: {
@@ -40,6 +43,7 @@ export const COURSES: any = {
     category: 'BEGINNER',
     lessonsCount: 10,
     seqNo: 4,
+    url: "ngrx-course"
   },
 
   5: {
@@ -51,6 +55,7 @@ export const COURSES: any = {
     category: 'BEGINNER',
     lessonsCount: 10,
     seqNo: 5,
+    url: "angular-for-beginners"
   },
 
   6: {
@@ -62,6 +67,7 @@ export const COURSES: any = {
     category: 'ADVANCED',
     lessonsCount: 11,
     seqNo: 6,
+    url: "angular-security-course"
   },
 
   7: {
@@ -72,7 +78,8 @@ export const COURSES: any = {
     courseListIcon: 'https://s3-us-west-1.amazonaws.com/angular-university/course-images/alien.png',
     category: 'ADVANCED',
     lessonsCount: 8,
-    seqNo: 7
+    seqNo: 7,
+    url: "angular-pwa-course"
   },
 
   8: {
@@ -82,7 +89,8 @@ export const COURSES: any = {
     iconUrl: 'https://angular-academy.s3.amazonaws.com/thumbnails/advanced_angular-small-v3.png',
     courseListIcon: 'https://angular-academy.s3.amazonaws.com/thumbnails/angular-advanced-lesson-icon.png',
     category: 'ADVANCED',
-    seqNo: 8
+    seqNo: 8,
+    url: "angular-advanced-course"
   },
 
   9: {
@@ -92,7 +100,8 @@ export const COURSES: any = {
     iconUrl: 'https://angular-academy.s3.amazonaws.com/thumbnails/typescript-2-small.png',
     courseListIcon: 'https://angular-academy.s3.amazonaws.com/thumbnails/typescript-2-lesson.png',
     category: 'BEGINNER',
-    seqNo: 9
+    seqNo: 9,
+    url: "typescript-course"
   },
 
   10: {
@@ -102,7 +111,8 @@ export const COURSES: any = {
     iconUrl: 'https://s3-us-west-1.amazonaws.com/angular-academy/blog/images/rxjs-reactive-patterns-small.png',
     courseListIcon: 'https://angular-academy.s3.amazonaws.com/course-logos/observables_rxjs.png',
     category: 'BEGINNER',
-    seqNo: 10
+    seqNo: 10,
+    url: "rxjs-patterns-course"
   },
 
   11: {
@@ -111,7 +121,8 @@ export const COURSES: any = {
     iconUrl: 'https://s3-us-west-1.amazonaws.com/angular-university/course-images/material_design.png',
     longDescription: 'Build Applications with the official Angular Widget Library',
     category: 'BEGINNER',
-    seqNo: 11
+    seqNo: 11,
+    url: "angular-material-course"
   }
 
 };
