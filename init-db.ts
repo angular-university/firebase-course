@@ -49,7 +49,7 @@ async function uploadData() {
 
       const courseLessons = findLessonsForCourse(course.id);
 
-      console.log('Adding lessons: ' + courseLessons.length);
+      //console.log(`Adding ${courseLessons.length} lessons to ${course.description}`);
 
       courseLessons.forEach(async lesson => {
 
@@ -77,14 +77,14 @@ function removeId(data:any) {
 
 uploadData()
   .then(() => {
-    console.log("Writing data, exiting in 5 seconds ...\n\n");
+    console.log("Writing data, exiting in 10 seconds ...\n\n");
 
     setTimeout(() => {
 
       console.log("\n\n\nData Upload Completed.\n\n\n");
       process.exit(0);
 
-    }, 5000);
+    }, 10000);
 
   })
   .catch(err => {

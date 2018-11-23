@@ -16,7 +16,7 @@ const routes: Routes = [
         component: AboutComponent
     },
     {
-        path: 'courses/:id',
+        path: 'courses/:courseUrl',
         component: CourseComponent,
         resolve: {
             course: CourseResolver
