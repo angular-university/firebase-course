@@ -344,7 +344,90 @@ export const LESSONS = {
     'duration': '5:38',
     'seqNo': 8,
     courseId: 7
+  },
+
+  // Serverless Angular with Firebase Course
+
+  30: {
+    id: 30,
+    description: 'Development Environment Setup',
+    'duration': '5:38',
+    'seqNo': 1,
+    courseId: 1
+  },
+
+  31: {
+    id: 31,
+    description: 'Introduction to the Firebase Ecosystem',
+    'duration': '5:12',
+    'seqNo': 2,
+    courseId: 1
+  },
+
+  32: {
+    id: 32,
+    description: 'Importing Data into Firestore',
+    'duration': '4:07',
+    'seqNo': 3,
+    courseId: 1
+  },
+
+  33: {
+    id: 33,
+    description: 'Firestore Documents in Detail',
+    'duration': '7:32',
+    'seqNo': 4,
+    courseId: 1
+  },
+
+  34: {
+    id: 34,
+    description: 'Firestore Collections in Detail',
+    'duration': '6:28',
+    'seqNo': 5,
+    courseId: 1
+  },
+
+  35: {
+    id: 35,
+    description: 'Firestore Unique Identifiers',
+    'duration': '4:38',
+    'seqNo': 6,
+    courseId: 1
+  },
+
+  36: {
+    id: 36,
+    description: 'Querying Firestore Collections',
+    'duration': '7:54',
+    'seqNo': 7,
+    courseId: 1
+  },
+
+  37: {
+    id: 37,
+    description: 'Firebase Security Rules In Detail',
+    'duration': '5:31',
+    'seqNo': 8,
+    courseId: 1
+  },
+
+  38: {
+    id: 38,
+    description: 'Firebase Cloud Functions In Detail',
+    'duration': '8:19',
+    'seqNo': 9,
+    courseId: 1
+  },
+
+  39: {
+    id: 39,
+    description: 'Firebase Storage In Detail',
+    'duration': '7:05',
+    'seqNo': 10,
+    courseId: 1
   }
+
 
 };
 
