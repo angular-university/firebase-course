@@ -21,7 +21,6 @@ import {
     MatTableModule,
     MatToolbarModule
 } from "@angular/material";
-import {CoursesService} from "./services/courses.service";
 import {CourseResolver} from "./services/course.resolver";
 import { CourseDialogComponent } from './course-dialog/course-dialog.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
@@ -70,7 +69,6 @@ import {AngularFireStorageModule} from '@angular/fire/storage';
         AngularFireStorageModule
     ],
     providers: [
-        CoursesService,
         CourseResolver
     ],
     bootstrap: [AppComponent],
