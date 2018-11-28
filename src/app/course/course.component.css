@@ -6,8 +6,9 @@
 }
 
 .course-thumbnail {
-    width: 150px;
-    margin: 20px auto 0 auto;
+    width: 200px;
+    border-radius: 4px;
+    margin: 20px auto;
     display: block;
 }
 
@@ -39,4 +40,9 @@
 
 .spinner-container mat-spinner {
     margin: 130px auto 0 auto;
+}
+
+.bottom-toolbar {
+  margin-top: 30px;
+  font-size: 18px;
 }

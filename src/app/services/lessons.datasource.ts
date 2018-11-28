@@ -19,27 +19,34 @@ export class LessonsDataSource implements DataSource<Lesson> {
 
     public loading$ = this.loadingSubject.asObservable();
 
+    lastPageLoaded = 0;
+
     constructor(private coursesService: CoursesService) {
 
     }
 
-    loadLessons(courseId:string,
-                pageIndex:number,
-                pageSize:number) {
+    loadMoreLessons(courseId:string) {
 
         this.loadingSubject.next(true);
 
         this.coursesService.findLessons(courseId, 'asc',
-            pageIndex, pageSize).pipe(
+          this.lastPageLoaded, 3).pipe(
                 catchError(() => of([])),
-                finalize(() => this.loadingSubject.next(false))
+                finalize(() => {
+                  this.loadingSubject.next(false);
+                  this.lastPageLoaded++;
+                })
             )
-            .subscribe(lessons => this.lessonsSubject.next(lessons));
+            .subscribe(moreLessons => {
+
+              const currentLessons = this.lessonsSubject.getValue();
+
+              this.lessonsSubject.next([...currentLessons, ...moreLessons]);
+            });
 
     }
 
     connect(collectionViewer: CollectionViewer): Observable<Lesson[]> {
-        console.log("Connecting data source");
         return this.lessonsSubject.asObservable();
     }
 

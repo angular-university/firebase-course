@@ -1,59 +1,49 @@
 import {AfterViewInit, Component, OnInit, ViewChild} from '@angular/core';
-import {ActivatedRoute} from "@angular/router";
-import {MatPaginator} from "@angular/material";
-import {Course} from "../model/course";
-import {CoursesService} from "../services/courses.service";
-
-import {LessonsDataSource} from "../services/lessons.datasource";
+import {ActivatedRoute} from '@angular/router';
+import {Course} from '../model/course';
 import {tap} from 'rxjs/operators';
+import {Observable} from 'rxjs';
+import {Lesson} from '../model/lesson';
+import {LessonsDataSource} from '../services/lessons.datasource';
+import {CoursesService} from '../services/courses.service';
 
 
 @Component({
-    selector: 'course',
-    templateUrl: './course.component.html',
-    styleUrls: ['./course.component.css']
+  selector: 'course',
+  templateUrl: './course.component.html',
+  styleUrls: ['./course.component.css']
 })
-export class CourseComponent implements OnInit, AfterViewInit {
+export class CourseComponent implements OnInit {
 
-    course:Course;
+  course: Course;
 
-    dataSource: LessonsDataSource;
+  dataSource: LessonsDataSource;
 
-    displayedColumns= ["seqNo", "description", "duration"];
+  displayedColumns = ['seqNo', 'description', 'duration'];
 
-    @ViewChild(MatPaginator) paginator: MatPaginator;
 
-    constructor(private route: ActivatedRoute,
-                private coursesService: CoursesService) {
+  constructor(
+    private route: ActivatedRoute,
+    private coursesService: CoursesService) {
 
-    }
+    this.dataSource = new LessonsDataSource(coursesService);
 
-    ngOnInit() {
+  }
 
-        this.course = this.route.snapshot.data["course"];
+  ngOnInit() {
 
-        this.dataSource = new LessonsDataSource(this.coursesService);
+    this.course = this.route.snapshot.data['course'];
 
-        this.dataSource.loadLessons(this.course.id, 0, 3);
+    this.dataSource.loadMoreLessons(this.course.id);
 
-    }
 
-    ngAfterViewInit() {
+  }
 
-        this.paginator.page
-        .pipe(
-            tap(() => this.loadLessonsPage())
-        )
-        .subscribe();
+  loadMore() {
 
-    }
+    this.dataSource.loadMoreLessons(this.course.id);
 
-    loadLessonsPage() {
-        this.dataSource.loadLessons(
-            this.course.id,
-            this.paginator.pageIndex,
-            this.paginator.pageSize);
-    }
+  }
 
 
 }
