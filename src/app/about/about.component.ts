@@ -20,8 +20,8 @@ export class AboutComponent implements OnInit {
 
   ngOnInit() {
 
-      this.db.collection('courses').valueChanges()
-          .subscribe(val => console.log(val));
+      this.db.collection('courses').snapshotChanges()
+          .subscribe(snaps => console.log(snaps));
 
   }
 
