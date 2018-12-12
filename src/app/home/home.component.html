@@ -3,13 +3,12 @@
 
     <h3>All Courses</h3>
 
-
     <mat-tab-group>
 
         <mat-tab label="Beginners">
 
             <courses-card-list
-                    [courses]="courses$ | async">
+                    [courses]="beginnersCourses$ | async">
 
             </courses-card-list>
 
@@ -18,7 +17,7 @@
         <mat-tab label="Advanced">
 
             <courses-card-list
-                    [courses]="[]"
+                    [courses]="advancedCourses$ | async"
 
             ></courses-card-list>
 
