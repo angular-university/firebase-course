@@ -13,7 +13,9 @@ export class CoursesService {
 
 
     loadAllCourses(): Observable<Course[]> {
-        return this.db.collection('courses')
+        return this.db.collection(
+            'courses',
+                ref=> ref.orderBy('seqNo'))
             .snapshotChanges()
             .pipe(
                 map(snaps => {
