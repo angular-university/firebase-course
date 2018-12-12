@@ -9,7 +9,7 @@
         <mat-tab label="Beginners">
 
             <courses-card-list
-                    [courses]="[]">
+                    [courses]="courses$ | async">
 
             </courses-card-list>
 
