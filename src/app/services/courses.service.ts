@@ -4,6 +4,8 @@ import {Course} from '../model/course';
 import {Observable,of} from 'rxjs';
 import {first, map} from 'rxjs/operators';
 import {convertSnaps} from './db-utils';
+import {Lesson} from '../model/lesson';
+import OrderByDirection = firebase.firestore.OrderByDirection;
 
 @Injectable({
   providedIn: 'root'
@@ -39,6 +41,22 @@ export class CoursesService {
                 first()
             )
     }
+
+    findLessons(courseId:string, sortOrder: OrderByDirection = 'asc',
+                pageNumber = 0, pageSize = 3):Observable<Lesson[]> {
+
+      return this.db.collection(`courses/${courseId}/lessons`,
+                ref => ref.orderBy('seqNo', sortOrder)
+                    .limit(pageSize)
+                    .startAfter(pageNumber * pageSize))
+          .snapshotChanges()
+          .pipe(
+              map(snaps => convertSnaps<Lesson>(snaps)),
+              first()
+          )
+
+    }
+
 }
 
 

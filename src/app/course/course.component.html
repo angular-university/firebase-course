@@ -10,7 +10,7 @@
 
     </div>
 
-    <mat-table class="lessons-table mat-elevation-z8" [dataSource]="dataSource">
+    <mat-table class="lessons-table mat-elevation-z8" [dataSource]="lessons">
 
         <ng-container matColumnDef="seqNo">
 
@@ -45,7 +45,8 @@
     </mat-table>
 
 
-    <button class="bottom-toolbar" mat-raised-button color="primary" (click)="loadMore()">Load More</button>
+    <button class="bottom-toolbar" mat-raised-button color="primary"
+            (click)="loadMore()">Load More</button>
 
 </div>
 
