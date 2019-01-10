@@ -20,16 +20,14 @@ export class CoursesCardListComponent implements OnInit {
 
     }
 
-    editCourse({titles}:Course) {
+    editCourse(course:Course) {
 
         const dialogConfig = new MatDialogConfig();
 
         dialogConfig.disableClose = true;
         dialogConfig.autoFocus = true;
 
-        dialogConfig.data = {
-            titles
-        };
+        dialogConfig.data = course;
 
         this.dialog.open(CourseDialogComponent, dialogConfig);
 
