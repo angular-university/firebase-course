@@ -1,4 +1,4 @@
-import {Component, Input, OnInit, ViewEncapsulation} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output, ViewEncapsulation} from '@angular/core';
 import {Course} from "../model/course";
 import {MatDialog, MatDialogConfig} from "@angular/material";
 import {CourseDialogComponent} from "../course-dialog/course-dialog.component";
@@ -12,6 +12,9 @@ export class CoursesCardListComponent implements OnInit {
 
     @Input()
     courses: Course[];
+
+    @Output()
+    courseEdited = new EventEmitter();
 
     constructor(private dialog: MatDialog) {
     }
@@ -29,7 +32,13 @@ export class CoursesCardListComponent implements OnInit {
 
         dialogConfig.data = course;
 
-        this.dialog.open(CourseDialogComponent, dialogConfig);
+        this.dialog.open(CourseDialogComponent, dialogConfig)
+            .afterClosed()
+            .subscribe(val => {
+                if (val) {
+                    this.courseEdited.emit();
+                }
+            });
 
     }
 

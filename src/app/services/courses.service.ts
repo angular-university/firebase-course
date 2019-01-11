@@ -15,6 +15,13 @@ export class CoursesService {
   constructor(private db: AngularFirestore) { }
 
 
+
+    saveCourse(courseId:string, changes: Partial<Course>): Observable<any> {
+
+      return of(this.db.doc(`courses/${courseId}`).update(changes));
+      
+    }  
+
     loadAllCourses(): Observable<Course[]> {
         return this.db.collection(
             'courses',
@@ -56,6 +63,9 @@ export class CoursesService {
           )
 
     }
+
+
+
 
 }
 
