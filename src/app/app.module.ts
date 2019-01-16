@@ -31,6 +31,7 @@ import { environment } from '../environments/environment';
 import {AngularFireAuthModule} from '@angular/fire/auth';
 import {AngularFirestoreModule} from '@angular/fire/firestore';
 import {AngularFireStorageModule} from '@angular/fire/storage';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
     declarations: [
@@ -39,7 +40,8 @@ import {AngularFireStorageModule} from '@angular/fire/storage';
         AboutComponent,
         CourseComponent,
         CoursesCardListComponent,
-        CourseDialogComponent
+        CourseDialogComponent,
+        LoginComponent
     ],
     imports: [
         BrowserModule,
