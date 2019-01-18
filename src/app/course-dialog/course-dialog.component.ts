@@ -4,7 +4,6 @@ import {Course} from "../model/course";
 import {FormBuilder, Validators, FormGroup} from "@angular/forms";
 
 
-
 @Component({
     selector: 'course-dialog',
     templateUrl: './course-dialog.component.html',
@@ -20,6 +19,7 @@ export class CourseDialogComponent implements OnInit {
         private dialogRef: MatDialogRef<CourseDialogComponent>,
         @Inject(MAT_DIALOG_DATA) course:Course) {
 
+
         const titles = course.titles;
 
         this.form = fb.group({
@@ -33,6 +33,7 @@ export class CourseDialogComponent implements OnInit {
 
     }
 
+
     save() {
 
         this.dialogRef.close(this.form.value);
@@ -44,3 +45,9 @@ export class CourseDialogComponent implements OnInit {
     }
 
 }
+
+
+
+
+
+

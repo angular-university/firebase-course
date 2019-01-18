@@ -22,14 +22,28 @@
                 <span>Login</span>
             </a>
 
+            <a mat-list-item (click)="logout()">
+                <mat-icon>exit_to_app</mat-icon>
+                <span>Logout</span>
+            </a>
+
         </mat-nav-list>
 
     </mat-sidenav>
 
     <mat-toolbar color="primary">
-        <button mat-icon-button (click)="start.open('mouse')">
-            <mat-icon>menu</mat-icon>
-        </button>
+
+        <div class="toolbar-tools">
+
+            <button mat-icon-button (click)="start.open('mouse')">
+                <mat-icon>menu</mat-icon>
+            </button>
+
+            <div class="filler"></div>
+
+        </div>
+
+
     </mat-toolbar>
 
     <router-outlet></router-outlet>
