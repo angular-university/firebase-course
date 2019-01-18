@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import * as firebaseui from 'firebaseui';
-import * as firebase from 'firebase';
+import * as firebase from 'firebase/app';
 
 
 @Component({
