@@ -47,7 +47,6 @@ export class CourseDialogComponent implements OnInit {
             .subscribe(
                 () => this.dialogRef.close(this.form.value)
             );
-
     }
 
     close() {
