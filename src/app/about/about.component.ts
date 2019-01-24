@@ -26,8 +26,6 @@ export class AboutComponent implements OnInit {
 
                 const course:any = snap.payload.data();
 
-                console.log('course.relatedCourseRef', course.relatedCourseRef);
-
             });
 
         const ref = this.db.doc('courses/MsU0Mz7pNSbnhzYSkt9y')
@@ -56,6 +54,31 @@ export class AboutComponent implements OnInit {
         const batch$ = of(batch.commit());
 
         batch$.subscribe();
+
+    }
+
+    async runTransaction() {
+
+        const newCounter = await this.db.firestore
+            .runTransaction(async transaction => {
+
+            console.log('Running transaction...');
+
+            const courseRef = this.db.doc('/courses/JVXlcA6ph98c7Vg2nc4E').ref;
+
+            const snap = await transaction.get(courseRef);
+
+            const course = <Course> snap.data();
+
+            const lessonsCount =  course.lessonsCount + 1;
+
+            transaction.update(courseRef, {lessonsCount});
+
+            return lessonsCount;
+
+        });
+
+        console.log("result lessons count = ",newCounter);
 
     }
 
