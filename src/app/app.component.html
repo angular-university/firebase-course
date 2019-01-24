@@ -12,17 +12,17 @@
                 <mat-icon>question_answer</mat-icon>
                 <span>About</span>
             </a>
-            <a mat-list-item routerLink="login">
+            <a mat-list-item routerLink="login" *ngIf="isLoggedOut$ | async">
                 <mat-icon>person_add</mat-icon>
                 <span>Register</span>
             </a>
 
-            <a mat-list-item routerLink="login">
+            <a mat-list-item routerLink="login" *ngIf="isLoggedOut$ | async">
                 <mat-icon>account_circle</mat-icon>
                 <span>Login</span>
             </a>
 
-            <a mat-list-item (click)="logout()">
+            <a mat-list-item (click)="logout()" *ngIf="isLoggedIn$ | async">
                 <mat-icon>exit_to_app</mat-icon>
                 <span>Logout</span>
             </a>
@@ -40,6 +40,12 @@
             </button>
 
             <div class="filler"></div>
+
+            <ng-container *ngIf="(pictureUrl$ | async) as pictureUrl">
+
+                <img class="user-avatar" [src]="pictureUrl" >
+
+            </ng-container>
 
         </div>
 
