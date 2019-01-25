@@ -20,20 +20,6 @@ export class AboutComponent implements OnInit {
 
     ngOnInit() {
 
-        const courseRef = this.db.doc('/courses/JVXlcA6ph98c7Vg2nc4E')
-            .snapshotChanges()
-            .subscribe(snap => {
-
-                const course:any = snap.payload.data();
-
-            });
-
-        const ref = this.db.doc('courses/MsU0Mz7pNSbnhzYSkt9y')
-            .snapshotChanges()
-            .subscribe(
-                doc => console.log("ref", doc.payload.ref)
-            )
-
 
     }
 
