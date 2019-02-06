@@ -14,13 +14,13 @@ import {MatTabsModule} from '@angular/material/tabs';
 import { CoursesCardListComponent } from './courses-card-list/courses-card-list.component';
 import {CourseComponent} from "./course/course.component";
 import {
-    MatDatepickerModule,
-    MatDialogModule,
-    MatInputModule, MatListModule, MatPaginatorModule, MatProgressSpinnerModule, MatSelectModule, MatSidenavModule,
-    MatSortModule,
-    MatTableModule,
-    MatToolbarModule
-} from "@angular/material";
+  MatDatepickerModule,
+  MatDialogModule,
+  MatInputModule, MatListModule, MatPaginatorModule, MatProgressBarModule, MatProgressSpinnerModule, MatSelectModule, MatSidenavModule,
+  MatSortModule,
+  MatTableModule,
+  MatToolbarModule
+} from '@angular/material';
 import {CourseResolver} from "./services/course.resolver";
 import { CourseDialogComponent } from './course-dialog/course-dialog.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
@@ -59,6 +59,7 @@ import { LoginComponent } from './login/login.component';
         MatPaginatorModule,
         MatSortModule,
         MatProgressSpinnerModule,
+        MatProgressBarModule,
         MatDialogModule,
         AppRoutingModule,
         MatSelectModule,
