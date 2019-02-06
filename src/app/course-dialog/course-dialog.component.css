@@ -8,3 +8,28 @@ textarea {
     height: 100px;
     resize: vertical;
 }
+
+.course-image-upload {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+
+.course-image-upload span {
+  margin-bottom:10px;
+}
+
+.upload-progress {
+  display: flex;
+  margin: 10px;
+}
+
+.progress-bar {
+  margin: 10px;
+  width: 300px;
+}
+
+.uploaded-image {
+  max-width: 250px;
+}
