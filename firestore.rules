@@ -1,0 +1,52 @@
+service cloud.firestore {
+
+  match /databases/{database}/documents {
+
+     function isAuthenticated() {
+     	return request.auth.uid !=null;
+     }
+     
+     function isNonEmptyString(fieldName) {
+     return request.resource.data[fieldName] is string &&
+     				request.resource.data[fieldName].size()> 0;
+     }
+     
+     function isValidCourse() {
+     	return request.resource.data.seqNo is number
+      			&& request.resource.data.lessonsCount is number
+            && request.resource.data.lessonsCount > 0
+            && isNonEmptyString("url"); 
+     
+     }
+     
+     function isAdmin() {
+       return isAuthenticated() &&
+          get( /databases/$(database)/documents/users/$(request.auth.uid)).data.isAdmin == true;
+     }
+          
+     function isKnownUser() {
+        return isAuthenticated() && 
+        exists( /databases/$(database)/documents/users/$(request.auth.uid) );
+     }
+     
+     match /users/{userId} {
+       allow read, write: if false;
+     }
+
+     match /courses/{courseId} {
+     	allow read: if isKnownUser();
+      allow write: if isAdmin() && isValidCourse() 
+      && resource.data.status == 'draft';
+      
+      match /lessons/{lessonId} {
+       allow read: if isKnownUser();
+       allow write: if isAdmin();
+      
+      }
+      
+     }
+
+
+  }
+
+}
