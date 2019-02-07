@@ -6,6 +6,7 @@ import {CoursesService} from '../services/courses.service';
 import {AngularFirestore} from '@angular/fire/firestore';
 import {AngularFireStorage} from '@angular/fire/storage';
 import {Observable} from 'rxjs';
+import {concatMap, last, tap} from 'rxjs/operators';
 
 
 @Component({
@@ -21,6 +22,8 @@ export class CourseDialogComponent implements OnInit {
     course: Course;
 
     uploadPercent$ : Observable<number>;
+
+    downloadUrl$: Observable<string>;
 
     constructor(
         private fb: FormBuilder,
@@ -50,8 +53,14 @@ export class CourseDialogComponent implements OnInit {
 
         this.uploadPercent$ = task.percentageChanges();
 
-        task.snapshotChanges()
-            .subscribe(console.log);
+        this.downloadUrl$ = task.snapshotChanges()
+            .pipe(
+                last(),
+                concatMap(() => this.storage.ref(filePath).getDownloadURL())
+            );
+
+
+        this.downloadUrl$.subscribe(console.log);
 
     }
 
