@@ -3,7 +3,6 @@ import {db} from './init';
 
 
 import * as express from "express";
-import {Course} from '../../src/app/model/course';
 const cors = require('cors');
 
 const app = express();
@@ -15,7 +14,7 @@ app.get('/courses', async (request, response) => {
 
     const snaps = await db.collection('courses').get();
 
-    const courses:Course[] = [];
+    const courses:any[] = [];
 
     snaps.forEach(snap => courses.push(snap.data()));
 
@@ -25,3 +24,5 @@ app.get('/courses', async (request, response) => {
 
 
 export const getCourses = functions.https.onRequest(app);
+
+export {onAddLesson} from './lessons-counter';
