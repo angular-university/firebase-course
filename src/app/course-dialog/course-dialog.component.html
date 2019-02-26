@@ -7,38 +7,8 @@
     <mat-form-field>
 
         <input matInput
-                placeholder="Course Description"
+                placeholder=" Title"
                formControlName="description">
-
-    </mat-form-field>
-
-    <mat-form-field>
-
-        <mat-select placeholder="Select category"
-            formControlName="category">
-
-            <mat-option value="BEGINNER">
-                Beginner</mat-option>
-            <mat-option value="INTERMEDIATE">
-                Intermediate</mat-option>
-            <mat-option value="ADVANCED">
-                Advanced</mat-option>
-
-        </mat-select>
-
-    </mat-form-field>
-
-    <mat-form-field>
-
-        <input matInput [matDatepicker]="myDatepicker"
-            formControlName="releasedAt">
-
-        <mat-datepicker-toggle matSuffix
-                               [for]="myDatepicker">
-
-        </mat-datepicker-toggle>
-
-        <mat-datepicker #myDatepicker></mat-datepicker>
 
     </mat-form-field>
 
@@ -50,6 +20,26 @@
         </textarea>
 
     </mat-form-field>
+
+    <div class="course-image-upload">
+
+        <span>Course:</span>
+
+        <input type="file" (change)="uploadFile($event)">
+
+        <div class="upload-progress" *ngIf="(uploadPercent$ | async) as percentage">
+
+            Upload Progress:
+
+            <mat-progress-bar class="progress-bar" mode="determinate" [value]="percentage">
+
+            </mat-progress-bar>
+
+            <span>{{percentage / 100 | percent}}</span>
+
+        </div>
+
+    </div>
 
 
 </mat-dialog-content>

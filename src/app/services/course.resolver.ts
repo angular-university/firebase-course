@@ -4,8 +4,8 @@
 import {Injectable} from "@angular/core";
 import {ActivatedRouteSnapshot, Resolve, RouterStateSnapshot} from "@angular/router";
 import {Course} from "../model/course";
-import {Observable} from "rxjs";
-import {CoursesService} from "./courses.service";
+import {Observable, of} from 'rxjs';
+import {CoursesService} from './courses.service';
 import {first} from 'rxjs/operators';
 
 
@@ -17,11 +17,14 @@ export class CourseResolver implements Resolve<Course> {
 
     }
 
-    resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<Course> {
-        return this.coursesService.findCourseByUrl(route.params['courseUrl'])
-          .pipe(
-            first()
-          );
+    resolve(route: ActivatedRouteSnapshot,
+            state: RouterStateSnapshot): Observable<Course> {
+
+        const courseUrl = route.paramMap.get('courseUrl');
+
+
+        return this.coursesService.findCourseByUrl(courseUrl);
+
     }
 
 }

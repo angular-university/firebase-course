@@ -1,9 +1,9 @@
 import {Component, OnInit} from '@angular/core';
-import {Course} from "../model/course";
-import {Observable} from "rxjs";
-import {CoursesService} from "../services/courses.service";
-import {map} from "rxjs/operators";
-
+import {Course} from '../model/course';
+import {Observable} from 'rxjs';
+import {map} from 'rxjs/operators';
+import {AngularFirestore} from '@angular/fire/firestore';
+import {CoursesService} from '../services/courses.service';
 
 
 @Component({
@@ -13,7 +13,9 @@ import {map} from "rxjs/operators";
 })
 export class HomeComponent implements OnInit {
 
-    beginnerCourses$: Observable<Course[]>;
+    courses$: Observable<Course[]>;
+
+    beginnersCourses$: Observable<Course[]>;
 
     advancedCourses$: Observable<Course[]>;
 
@@ -23,16 +25,23 @@ export class HomeComponent implements OnInit {
 
     ngOnInit() {
 
-        const courses$ = this.coursesService.findAllCourses();
-
-        this.beginnerCourses$ = courses$.pipe(
-          map(courses => courses.filter(course => course.category === 'BEGINNER') )
-        );
-
-        this.advancedCourses$ = courses$.pipe(
-            map(courses => courses.filter(course => course.category === 'ADVANCED') )
-        );
+        this.reloadCourses();
 
     }
+
+    reloadCourses() {
+        this.courses$ = this.coursesService.loadAllCourses();
+
+        this.beginnersCourses$ = this.courses$.pipe(
+            map(courses => courses.filter(
+                course => course.categories.includes("BEGINNER"))));
+
+        this.advancedCourses$ = this.courses$.pipe(
+            map(courses => courses.filter(
+                course => course.categories.includes("ADVANCED"))));
+    }
+
+
+
 
 }

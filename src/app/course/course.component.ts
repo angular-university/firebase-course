@@ -1,10 +1,9 @@
 import {AfterViewInit, Component, OnInit, ViewChild} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {Course} from '../model/course';
-import {tap} from 'rxjs/operators';
+import {finalize, tap} from 'rxjs/operators';
 import {Observable} from 'rxjs';
 import {Lesson} from '../model/lesson';
-import {LessonsDataSource} from '../services/lessons.datasource';
 import {CoursesService} from '../services/courses.service';
 
 
@@ -17,16 +16,17 @@ export class CourseComponent implements OnInit {
 
   course: Course;
 
-  dataSource: LessonsDataSource;
+  lessons: Lesson[];
+
+  lastPageLoaded = 0;
+
+  loading = false;
 
   displayedColumns = ['seqNo', 'description', 'duration'];
 
 
-  constructor(
-    private route: ActivatedRoute,
-    private coursesService: CoursesService) {
-
-    this.dataSource = new LessonsDataSource(coursesService);
+  constructor(private route: ActivatedRoute,
+              private coursesService: CoursesService) {
 
   }
 
@@ -34,16 +34,31 @@ export class CourseComponent implements OnInit {
 
     this.course = this.route.snapshot.data['course'];
 
-    this.dataSource.loadMoreLessons(this.course.id);
+    this.loading = true;
 
+    this.coursesService.findLessons(this.course.id)
+        .pipe(
+            finalize(() => this.loading = false)
+        )
+        .subscribe(
+            lessons => this.lessons = lessons
+        );
 
   }
 
   loadMore() {
 
-    this.dataSource.loadMoreLessons(this.course.id);
+      this.lastPageLoaded++;
+
+      this.loading = true;
+
+      this.coursesService.findLessons(this.course.id, 'asc',
+          this.lastPageLoaded)
+          .pipe(
+              finalize(() => this.loading = false)
+          )
+          .subscribe(lessons => this.lessons = this.lessons.concat(lessons));
 
   }
-
 
 }

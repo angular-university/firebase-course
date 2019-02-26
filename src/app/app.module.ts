@@ -14,14 +14,13 @@ import {MatTabsModule} from '@angular/material/tabs';
 import { CoursesCardListComponent } from './courses-card-list/courses-card-list.component';
 import {CourseComponent} from "./course/course.component";
 import {
-    MatDatepickerModule,
-    MatDialogModule,
-    MatInputModule, MatListModule, MatPaginatorModule, MatProgressSpinnerModule, MatSelectModule, MatSidenavModule,
-    MatSortModule,
-    MatTableModule,
-    MatToolbarModule
-} from "@angular/material";
-import {CoursesService} from "./services/courses.service";
+  MatDatepickerModule,
+  MatDialogModule,
+  MatInputModule, MatListModule, MatPaginatorModule, MatProgressBarModule, MatProgressSpinnerModule, MatSelectModule, MatSidenavModule,
+  MatSortModule,
+  MatTableModule,
+  MatToolbarModule
+} from '@angular/material';
 import {CourseResolver} from "./services/course.resolver";
 import { CourseDialogComponent } from './course-dialog/course-dialog.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
@@ -32,6 +31,7 @@ import { environment } from '../environments/environment';
 import {AngularFireAuthModule} from '@angular/fire/auth';
 import {AngularFirestoreModule} from '@angular/fire/firestore';
 import {AngularFireStorageModule} from '@angular/fire/storage';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
     declarations: [
@@ -40,7 +40,8 @@ import {AngularFireStorageModule} from '@angular/fire/storage';
         AboutComponent,
         CourseComponent,
         CoursesCardListComponent,
-        CourseDialogComponent
+        CourseDialogComponent,
+        LoginComponent
     ],
     imports: [
         BrowserModule,
@@ -58,6 +59,7 @@ import {AngularFireStorageModule} from '@angular/fire/storage';
         MatPaginatorModule,
         MatSortModule,
         MatProgressSpinnerModule,
+        MatProgressBarModule,
         MatDialogModule,
         AppRoutingModule,
         MatSelectModule,
@@ -70,7 +72,6 @@ import {AngularFireStorageModule} from '@angular/fire/storage';
         AngularFireStorageModule
     ],
     providers: [
-        CoursesService,
         CourseResolver
     ],
     bootstrap: [AppComponent],
