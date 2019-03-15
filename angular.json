@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "angular-material-course": {
+    "firebase-course": {
       "root": "",
       "sourceRoot": "src",
       "projectType": "application",
@@ -48,18 +48,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "angular-material-course:build"
+            "browserTarget": "firebase-course:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "angular-material-course:build:production"
+              "browserTarget": "firebase-course:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "angular-material-course:build"
+            "browserTarget": "firebase-course:build"
           }
         },
         "test": {
@@ -93,7 +93,7 @@
         }
       }
     },
-    "angular-material-course-e2e": {
+    "firebase-course-e2e": {
       "root": "",
       "sourceRoot": "",
       "projectType": "application",
@@ -102,7 +102,7 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "./protractor.conf.js",
-            "devServerTarget": "angular-material-course:serve"
+            "devServerTarget": "firebase-course:serve"
           }
         },
         "lint": {
@@ -119,7 +119,7 @@
       }
     }
   },
-  "defaultProject": "angular-material-course",
+  "defaultProject": "firebase-course",
   "schematics": {
     "@schematics/angular:component": {
       "styleext": "scss"
