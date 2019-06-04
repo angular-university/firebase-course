@@ -5,7 +5,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "init-db": "ts-node ./init-db.ts",
+    "init-db": "ts-node -P ./init-db.tsconfig.json ./init-db.ts",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",

@@ -22,14 +22,6 @@ firebase.initializeApp(config);
 
 const db = firebase.firestore();
 
-
-const settings = {timestampsInSnapshots: true};
-
-db.settings(settings);
-
-
-
-
 async function uploadData() {
 
   var batch = db.batch();
