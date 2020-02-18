@@ -3,7 +3,7 @@
 
 This repository contains the code of the [Serverless Angular with Firebase & AngularFire Course](https://angular-university.io/course/firebase-course).
 
-This course repository is updated to Angular v8, and there is a  package-lock.json file available, for avoiding semantic versioning installation issues.
+This course repository is updated to Angular v9, and there is a  package-lock.json file available, for avoiding semantic versioning installation issues.
 
 ![Serverless Angular with Firebase & AngularFire Course](https://s3-us-west-1.amazonaws.com/angular-university/course-images/serverless-angular-small.png)
 
