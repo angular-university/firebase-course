@@ -17,6 +17,8 @@ export class CourseComponent implements OnInit {
 
   displayedColumns = ['seqNo', 'description', 'duration'];
 
+  dataSource:any;
+
 
   constructor(
     private route: ActivatedRoute) {
