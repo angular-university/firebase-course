@@ -37,6 +37,7 @@ testem.log
 /e2e/*.js
 /e2e/*.map
 /src/environments/environment.*ts
+/src/environments/*.ts
 
 # System Files
 .DS_Store

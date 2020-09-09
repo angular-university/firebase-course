@@ -6,6 +6,13 @@
 export const environment = {
   production: false,
   firebase: {
-
+    apiKey: 'AIzaSyDmtqt0DqVlvqEJIqvgqQZp_gGmIheJPVI',
+    authDomain: 'dlocalmart-online.firebaseapp.com',
+    databaseURL: 'https://dlocalmart-online.firebaseio.com',
+    projectId: 'dlocalmart-online',
+    storageBucket: 'dlocalmart-online.appspot.com',
+    messagingSenderId: '128305427314',
+    appId: '1:128305427314:web:36a85fee2fd65ab399e3eb',
+    measurementId: 'G-K0MWY5RZ79'
   }
 };
