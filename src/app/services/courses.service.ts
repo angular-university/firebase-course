@@ -5,7 +5,9 @@ import {from, Observable, of} from 'rxjs';
 import {first, map} from 'rxjs/operators';
 import {convertSnaps} from './db-utils';
 import {Lesson} from '../model/lesson';
+import firebase from 'firebase/app';
 import OrderByDirection = firebase.firestore.OrderByDirection;
+
 
 @Injectable({
   providedIn: 'root'

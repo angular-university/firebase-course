@@ -1,8 +1,10 @@
 import {Component, NgZone, OnDestroy, OnInit} from '@angular/core';
 import * as firebaseui from 'firebaseui';
-import * as firebase from 'firebase/app';
 import {AngularFireAuth} from '@angular/fire/auth';
 import {Router} from '@angular/router';
+import firebase from 'firebase/app';
+import EmailAuthProvider = firebase.auth.EmailAuthProvider;
+import GoogleAuthProvider = firebase.auth.GoogleAuthProvider;
 
 
 @Component({
@@ -21,26 +23,21 @@ export class LoginComponent implements OnInit, OnDestroy {
     }
 
     ngOnInit() {
-
-        const uiConfig = {
-            signInOptions: [
-                firebase.auth.GoogleAuthProvider.PROVIDER_ID,
-                firebase.auth.EmailAuthProvider.PROVIDER_ID
-            ],
-            callbacks: {
-
-                signInSuccessWithAuthResult: this
-                    .onLoginSuccessful
-                    .bind(this)
-            }
-
-        };
-
-        this.ui = new firebaseui.auth.AuthUI(this.afAuth.auth);
-
-        this.ui.start('#firebaseui-auth-container', uiConfig);
-
-
+       this.afAuth.app.then((app) => {
+         const uiConfig = {
+           signInOptions: [
+             GoogleAuthProvider.PROVIDER_ID,
+             EmailAuthProvider.PROVIDER_ID
+           ],
+           callbacks: {
+             signInSuccessWithAuthResult: this
+               .onLoginSuccessful
+               .bind(this)
+           }
+         };
+          this.ui = new firebaseui.auth.AuthUI(app.auth());
+          this.ui.start('#firebaseui-auth-container', uiConfig);
+        });
     }
 
     ngOnDestroy() {
