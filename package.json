@@ -5,6 +5,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
+    "emulator": " firebase emulators:start --only firestore",
     "init-db": "ts-node -P ./init-db.tsconfig.json ./init-db.ts",
     "build": "ng build",
     "test": "ng test",
@@ -27,6 +28,7 @@
     "@angular/router": "^11.1.2",
     "core-js": "^2.5.7",
     "firebase": "^8.2.5",
+    "firebase-tools": "^9.3.0",
     "firebaseui": "^4.7.3",
     "moment": "^2.24.0",
     "rxjs": "~6.6.0",
