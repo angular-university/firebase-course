@@ -7,6 +7,7 @@
     "start": "ng serve",
     "emulator": " firebase emulators:start --only firestore",
     "init-db": "ts-node -P ./init-db.tsconfig.json ./init-db.ts",
+    "emulators": "firebase emulators:start",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
