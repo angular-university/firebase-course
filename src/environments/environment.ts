@@ -5,13 +5,8 @@
 
 export const environment = {
   production: false,
+  useEmulators:true,
   firebase: {
-    apiKey: "AIzaSyDAdoefqX5OqjkD3BkW25ZAL6XYZMo4Vz8",
-    authDomain: "fir-course-17549.firebaseapp.com",
-    databaseURL: "https://fir-course-17549.firebaseio.com",
-    projectId: "fir-course-17549",
-    storageBucket: "fir-course-17549.appspot.com",
-    messagingSenderId: "170806523820",
-    appId: "1:170806523820:web:a3181632d54d076a0bec09"
+    projectId: "fir-course-v2"
   }
 };

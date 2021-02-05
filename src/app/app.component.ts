@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {AngularFireAuth} from '@angular/fire/auth';
 import {Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
+import {AngularFirestore} from '@angular/fire/firestore';
 
 @Component({
   selector: 'app-root',
@@ -16,12 +17,14 @@ export class AppComponent implements OnInit {
 
     pictureUrl$: Observable<string>;
 
-    constructor(private afAuth: AngularFireAuth) {
+    constructor(private afAuth: AngularFireAuth, private afs: AngularFirestore) {
 
 
     }
 
     ngOnInit() {
+
+      this.afs.collection("courses").valueChanges().subscribe(console.log);
 
         this.afAuth.authState.subscribe(user => console.log(user));
 

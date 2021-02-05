@@ -28,7 +28,6 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import {CourseResolver} from "./services/course.resolver";
 import { CourseDialogComponent } from './course-dialog/course-dialog.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
-import {MatMomentDateModule} from "@angular/material-moment-adapter";
 import {AngularFireModule} from '@angular/fire';
 
 import { environment } from '../environments/environment';
@@ -36,6 +35,13 @@ import {AngularFireAuthModule} from '@angular/fire/auth';
 import {AngularFirestoreModule} from '@angular/fire/firestore';
 import {AngularFireStorageModule} from '@angular/fire/storage';
 import { LoginComponent } from './login/login.component';
+import { USE_EMULATOR as USE_AUTH_EMULATOR } from '@angular/fire/auth';
+import { USE_EMULATOR as USE_FIRESTORE_EMULATOR } from '@angular/fire/firestore';
+import { USE_EMULATOR as USE_FUNCTIONS_EMULATOR } from '@angular/fire/functions';
+
+if (environment.useEmulators) {
+  console.log("Activating emulators ...");
+}
 
 @NgModule({
     declarations: [
@@ -68,14 +74,17 @@ import { LoginComponent } from './login/login.component';
         AppRoutingModule,
         MatSelectModule,
         MatDatepickerModule,
-        MatMomentDateModule,
         ReactiveFormsModule,
         AngularFireModule.initializeApp(environment.firebase),
-        AngularFireAuthModule,
         AngularFirestoreModule,
+        AngularFireAuthModule,
         AngularFireStorageModule
     ],
     providers: [
+      { provide: USE_AUTH_EMULATOR, useValue: environment.useEmulators ? ['localhost', 9099] : undefined },
+      { provide: USE_FIRESTORE_EMULATOR, useValue: environment.useEmulators ? ['localhost', 8080] : undefined },
+      //{ provide: USE_FUNCTIONS_EMULATOR, useValue: environment.useEmulators ? ['localhost', 5001] : undefined }
+
         CourseResolver
     ],
     bootstrap: [AppComponent],
