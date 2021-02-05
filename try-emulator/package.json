@@ -8,7 +8,8 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "emulators": "firebase emulators:start"
+    "empty-emulator": "firebase emulators:start",
+    "emulator": "firebase emulators:start --import test-data"
   },
   "private": true,
   "dependencies": {
