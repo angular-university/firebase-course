@@ -10,7 +10,9 @@ import {first} from 'rxjs/operators';
 
 
 
-@Injectable()
+@Injectable({
+  providedIn: "root"
+})
 export class CourseResolver implements Resolve<Course> {
 
     constructor(private coursesService:CoursesService) {
