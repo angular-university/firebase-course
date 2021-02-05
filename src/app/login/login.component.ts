@@ -17,26 +17,25 @@ export class LoginComponent implements OnInit, OnDestroy {
     ui: firebaseui.auth.AuthUI;
 
     constructor(private afAuth: AngularFireAuth,
-                private router:Router,
-                private ngZone: NgZone) {
+                private router: Router) {
 
     }
 
     ngOnInit() {
-       this.afAuth.app.then((app) => {
-         const uiConfig = {
-           signInOptions: [
-             GoogleAuthProvider.PROVIDER_ID,
-             EmailAuthProvider.PROVIDER_ID
-           ],
-           callbacks: {
-             signInSuccessWithAuthResult: this
-               .onLoginSuccessful
-               .bind(this)
-           }
-         };
-          this.ui = new firebaseui.auth.AuthUI(app.auth());
-          this.ui.start('#firebaseui-auth-container', uiConfig);
+        this.afAuth.app.then((app) => {
+            const uiConfig = {
+                signInOptions: [
+                    GoogleAuthProvider.PROVIDER_ID,
+                    EmailAuthProvider.PROVIDER_ID
+                ],
+                callbacks: {
+                    signInSuccessWithAuthResult: this
+                        .onLoginSuccessful
+                        .bind(this)
+                }
+            };
+            this.ui = new firebaseui.auth.AuthUI(app.auth());
+            this.ui.start('#firebaseui-auth-container', uiConfig);
         });
     }
 
@@ -46,9 +45,9 @@ export class LoginComponent implements OnInit, OnDestroy {
 
     onLoginSuccessful(result) {
 
-        console.log("Firebase UI result:", result);
+        console.log('Firebase UI result:', result);
 
-        this.ngZone.run(() => this.router.navigateByUrl('/courses'));
+        this.router.navigateByUrl('/courses');
 
     }
 
