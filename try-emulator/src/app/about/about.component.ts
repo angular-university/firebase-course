@@ -1,11 +1,12 @@
-import {Component, OnInit, ViewEncapsulation} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 
-import * as firebase from 'firebase/app';
+
 import 'firebase/firestore';
-import {Course} from '../model/course';
+
 import {AngularFirestore} from '@angular/fire/firestore';
 import {of} from 'rxjs';
-import {COURSES, findLessonsForCourse} from '../../../../db-data';
+import {COURSES, findLessonsForCourse} from './db-data';
+
 
 
 @Component({
