@@ -118,19 +118,6 @@ export const COURSES: any = {
     price: 50
   },
 
-
-  1: {
-    id: 1,
-    description: 'Serverless Angular with Firebase Course',
-    longDescription: 'Serveless Angular with Firestore, Firebase Storage & Hosting, Firebase Cloud Functions & AngularFire',
-    iconUrl: 'https://s3-us-west-1.amazonaws.com/angular-university/course-images/serverless-angular-small.png',
-    lessonsCount: 10,
-    category: 'BEGINNER',
-    seqNo: 9,
-    url: 'serverless-angular',
-    price: 50
-  },
-
   16: {
     id: 16,
     description: 'Stripe Payments In Practice',
