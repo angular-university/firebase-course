@@ -1,0 +1,61 @@
+
+<h2 mat-dialog-title>{{description}}</h2>
+
+
+<mat-dialog-content [formGroup]="form">
+
+    <mat-form-field>
+
+        <input matInput
+                placeholder=" Title"
+               formControlName="description">
+
+    </mat-form-field>
+
+    <mat-form-field>
+
+        <textarea matInput placeholder="Description"
+            formControlName="longDescription">
+
+        </textarea>
+
+    </mat-form-field>
+
+    <div class="course-image-upload">
+
+        <span>Course:</span>
+
+        <input type="file" (change)="uploadFile($event)">
+
+        <div class="upload-progress" *ngIf="(uploadPercent$ | async) as percentage">
+
+            Upload Progress:
+
+            <mat-progress-bar class="progress-bar" mode="determinate" [value]="percentage">
+
+            </mat-progress-bar>
+
+            <span>{{percentage / 100 | percent}}</span>
+
+        </div>
+
+    </div>
+
+
+</mat-dialog-content>
+
+<mat-dialog-actions>
+
+    <button class="mat-raised-button"
+            (click)="close()">
+        Close
+    </button>
+
+    <button class="mat-raised-button mat-primary"
+            (click)="save()">
+        Save
+    </button>
+
+</mat-dialog-actions>
+
+
