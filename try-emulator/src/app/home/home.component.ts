@@ -30,15 +30,16 @@ export class HomeComponent implements OnInit {
     }
 
     reloadCourses() {
+
         this.courses$ = this.coursesService.loadAllCourses();
 
         this.beginnersCourses$ = this.courses$.pipe(
             map(courses => courses.filter(
-                course => course.categories.includes("BEGINNER"))));
+                course => course.category == 'BEGINNER')));
 
         this.advancedCourses$ = this.courses$.pipe(
             map(courses => courses.filter(
-                course => course.categories.includes("ADVANCED"))));
+                course => course.category == "ADVANCED")));
     }
 
 

@@ -80,7 +80,7 @@ export class AboutComponent implements OnInit {
       const courseRef = await coursesCollection.add(newCourse);
       const lessons = await courseRef.collection('lessons');
       const courseLessons = findLessonsForCourse(course['id']);
-      console.log(`Uploading course ${course['titles']['description']}`);
+      console.log(`Uploading course ${course['description']}`);
       for (const lesson of courseLessons) {
         const newLesson = this.removeId(lesson);
         await lessons.add(newLesson);

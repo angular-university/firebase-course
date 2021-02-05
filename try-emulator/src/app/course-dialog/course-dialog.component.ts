@@ -33,11 +33,9 @@ export class CourseDialogComponent implements OnInit {
 
         this.course = course;
 
-        const titles = course.titles;
-
         this.form = fb.group({
-            description: [titles.description, Validators.required],
-            longDescription: [titles.longDescription,Validators.required]
+            description: [course.description, Validators.required],
+            longDescription: [course.longDescription,Validators.required]
         });
 
     }
@@ -63,7 +61,7 @@ export class CourseDialogComponent implements OnInit {
 
         const changes = this.form.value;
 
-        this.coursesService.saveCourse(this.course.id, {titles: changes})
+        this.coursesService.saveCourse(this.course.id, {...changes})
             .subscribe(
                 () => this.dialogRef.close(this.form.value)
             );
