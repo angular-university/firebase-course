@@ -11,35 +11,34 @@ import {AngularFirestore} from '@angular/fire/firestore';
 })
 export class AppComponent implements OnInit {
 
-    isLoggedIn$: Observable<boolean>;
+  isLoggedIn$: Observable<boolean>;
 
-    isLoggedOut$:Observable<boolean>;
+  isLoggedOut$: Observable<boolean>;
 
-    pictureUrl$: Observable<string>;
+  pictureUrl$: Observable<string>;
 
-    constructor(private afAuth: AngularFireAuth, private afs: AngularFirestore) {
+  constructor(private afs: AngularFirestore, private afAuth: AngularFireAuth) {
 
 
-    }
+  }
 
-    ngOnInit() {
+  ngOnInit() {
 
-      this.afs.collection("courses").valueChanges().subscribe(console.log);
+    this.afs.collection('courses').valueChanges().subscribe(console.log);
 
-        this.afAuth.authState.subscribe(user => console.log(user));
+    this.afAuth.authState.subscribe(user => console.log(user));
 
-        this.isLoggedIn$ = this.afAuth.authState.pipe(map(user => !!user));
+    this.isLoggedIn$ = this.afAuth.authState.pipe(map(user => !!user));
 
-        this.isLoggedOut$ = this.isLoggedIn$.pipe(map(loggedIn => !loggedIn));
+    this.isLoggedOut$ = this.isLoggedIn$.pipe(map(loggedIn => !loggedIn));
 
-        this.pictureUrl$ =
-            this.afAuth.authState.pipe(map(user => user ? user.photoURL: null));
-    }
+    this.pictureUrl$ = this.afAuth.authState.pipe(map(user => user ? user.photoURL : null));
+  }
 
-    logout() {
+  logout() {
 
-        this.afAuth.signOut();
+    this.afAuth.signOut();
 
-    }
+  }
 
 }

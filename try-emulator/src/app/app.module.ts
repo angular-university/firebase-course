@@ -28,13 +28,14 @@ import {MatDialogModule} from '@angular/material/dialog';
 import {MatSelectModule} from '@angular/material/select';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {ReactiveFormsModule} from '@angular/forms';
-import {AppRoutingModule} from '../../../src/app/app-routing.module';
-import {HomeComponent} from '../../../src/app/home/home.component';
-import {AboutComponent} from '../../../src/app/about/about.component';
-import {CourseComponent} from '../../../src/app/course/course.component';
-import {CoursesCardListComponent} from '../../../src/app/courses-card-list/courses-card-list.component';
-import {CourseDialogComponent} from '../../../src/app/course-dialog/course-dialog.component';
-import {LoginComponent} from '../../../src/app/login/login.component';
+import {HomeComponent} from './home/home.component';
+import {AboutComponent} from './about/about.component';
+import {CourseDialogComponent} from './course-dialog/course-dialog.component';
+import {LoginComponent} from './login/login.component';
+import {CoursesCardListComponent} from './courses-card-list/courses-card-list.component';
+import {AppRoutingModule} from './app-routing.module';
+import {CourseComponent} from './course/course.component';
+
 
 @NgModule({
   declarations: [
