@@ -2,6 +2,10 @@ import {Component, EventEmitter, Input, OnInit, Output, ViewEncapsulation} from 
 import {Course} from "../model/course";
 import { MatDialog, MatDialogConfig } from "@angular/material/dialog";
 import {EditCourseDialogComponent} from "../edit-course-dialog/edit-course-dialog.component";
+import {CoursesService} from '../services/courses.service';
+import {catchError, tap} from 'rxjs/operators';
+import {throwError} from 'rxjs';
+import {Router} from '@angular/router';
 
 @Component({
     selector: 'courses-card-list',
@@ -16,7 +20,13 @@ export class CoursesCardListComponent implements OnInit {
     @Output()
     courseEdited = new EventEmitter();
 
-    constructor(private dialog: MatDialog) {
+    @Output()
+    courseDeleted = new EventEmitter<Course>();
+
+    constructor(
+      private dialog: MatDialog,
+      private coursesDB: CoursesService,
+      private router: Router) {
     }
 
     ngOnInit() {
@@ -42,6 +52,21 @@ export class CoursesCardListComponent implements OnInit {
 
     }
 
+  onDeleteCourse(course:Course) {
+    this.coursesDB.deleteCourse(course.id)
+      .pipe(
+        tap(() => {
+          console.log("Deleted course: ", course);
+          this.courseDeleted.emit(course);
+        }),
+        catchError(err => {
+          console.log(err);
+          alert('Could not delete course.');
+
+          return throwError(err);
+        })
+      ).subscribe();
+  }
 }
 
 

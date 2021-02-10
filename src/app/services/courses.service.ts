@@ -90,6 +90,10 @@ export class CoursesService {
   }
 
 
+  deleteCourse(courseId: string) {
+    return from(this.afs.doc(`courses/${courseId}`).delete());
+  }
+
 }
 
 
