@@ -35,7 +35,11 @@ export class CreateCourseComponent {
 
     const newCourse = this.form.value as Course;
 
-    this.courses.createCourse(newCourse)
+    const courseId = this.afs.createId();
+
+    console.log("Creating course with Id: ", courseId);
+
+    this.courses.createCourse(newCourse, courseId)
       .pipe(
         tap(course => {
           console.log("Created new course: ", course);

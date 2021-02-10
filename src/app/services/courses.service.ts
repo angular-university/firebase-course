@@ -59,8 +59,7 @@ export class CoursesService {
       );
 
   }
-
-  createCourse(newCourse: Course) {
+  createCourse(newCourse: Partial<Course>, courseId?:string) {
     return this.afs.collection<Course>('courses', ref => ref.orderBy('seqNo', 'desc').limit(1))
       .valueChanges()
       .pipe(
@@ -69,15 +68,26 @@ export class CoursesService {
 
           const lastCourseSeqNo = courses[0]?.seqNo ?? 0;
 
-          return from(this.afs.collection('courses').add({
+          const course = {
             ...newCourse,
             seqNo: lastCourseSeqNo + 1
-          }))
+          };
+
+          let save$: Observable<any>;
+
+          if (courseId) {
+            save$ = from(this.afs.doc(`courses/${courseId}`).set(course));
+          }
+          else {
+            save$ = from(this.afs.collection('courses').add(course));
+          }
+
+          return save$
             .pipe(
               map(res => {
                 return {
-                  id: res.id,
-                  ...newCourse
+                  id: courseId ?? res.id,
+                  ...course
                 };
               })
             );
