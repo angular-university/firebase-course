@@ -24,7 +24,6 @@ export class LoginComponent implements OnInit, OnDestroy {
     ngOnInit() {
         this.afAuth.app.then((app) => {
             const uiConfig = {
-                signInFlow: 'popup',
                 signInOptions: [
                     GoogleAuthProvider.PROVIDER_ID,
                     EmailAuthProvider.PROVIDER_ID
