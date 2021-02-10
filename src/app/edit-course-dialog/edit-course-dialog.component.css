@@ -33,3 +33,8 @@ textarea {
 .uploaded-image {
   max-width: 250px;
 }
+
+mat-dialog-actions {
+  display: flex;
+  justify-content: flex-end;
+}
