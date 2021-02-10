@@ -8,9 +8,10 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
+    "firebase": "firebase",
     "empty-emulator": "firebase emulators:start",
     "emulator": "firebase emulators:start --import test-data",
-    "export": "firebase emulators:export saved-data"
+    "export": "firebase emulators:export test-data"
   },
   "private": true,
   "dependencies": {
