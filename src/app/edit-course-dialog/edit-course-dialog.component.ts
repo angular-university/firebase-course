@@ -3,18 +3,16 @@ import { MAT_DIALOG_DATA, MatDialogRef } from "@angular/material/dialog";
 import {Course} from "../model/course";
 import {FormBuilder, Validators, FormGroup} from "@angular/forms";
 import {CoursesService} from '../services/courses.service';
-import {AngularFirestore} from '@angular/fire/firestore';
 import {AngularFireStorage} from '@angular/fire/storage';
 import {Observable} from 'rxjs';
-import {concatMap, last, tap} from 'rxjs/operators';
 
 
 @Component({
-    selector: 'course-dialog',
-    templateUrl: './course-dialog.component.html',
-    styleUrls: ['./course-dialog.component.css']
+    selector: 'edit-course-dialog',
+    templateUrl: './edit-course-dialog.component.html',
+    styleUrls: ['./edit-course-dialog.component.css']
 })
-export class CourseDialogComponent implements OnInit {
+export class EditCourseDialogComponent implements OnInit {
 
     form: FormGroup;
     description:string;
@@ -26,7 +24,7 @@ export class CourseDialogComponent implements OnInit {
 
     constructor(
         private fb: FormBuilder,
-        private dialogRef: MatDialogRef<CourseDialogComponent>,
+        private dialogRef: MatDialogRef<EditCourseDialogComponent>,
         @Inject(MAT_DIALOG_DATA) course:Course,
         private coursesService: CoursesService,
         private storage: AngularFireStorage) {

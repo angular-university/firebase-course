@@ -1,7 +1,7 @@
 import {Component, EventEmitter, Input, OnInit, Output, ViewEncapsulation} from '@angular/core';
 import {Course} from "../model/course";
 import { MatDialog, MatDialogConfig } from "@angular/material/dialog";
-import {CourseDialogComponent} from "../course-dialog/course-dialog.component";
+import {EditCourseDialogComponent} from "../edit-course-dialog/edit-course-dialog.component";
 
 @Component({
     selector: 'courses-card-list',
@@ -32,7 +32,7 @@ export class CoursesCardListComponent implements OnInit {
 
         dialogConfig.data = course;
 
-        this.dialog.open(CourseDialogComponent, dialogConfig)
+        this.dialog.open(EditCourseDialogComponent, dialogConfig)
             .afterClosed()
             .subscribe(val => {
                 if (val) {
