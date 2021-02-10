@@ -6,12 +6,14 @@ import {CourseComponent} from "./course/course.component";
 import {CourseResolver} from "./services/course.resolver";
 import {LoginComponent} from './login/login.component';
 import {CreateCourseComponent} from './create-course/create-course.component';
+import {AngularFireAuthGuard, redirectUnauthorizedTo} from '@angular/fire/auth-guard';
+
+const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo(['login']);
 
 const routes: Routes = [
     {
         path: "",
         component: HomeComponent
-
     },
     {
         path: "create-course",
@@ -30,6 +32,10 @@ const routes: Routes = [
         component: CourseComponent,
         resolve: {
             course: CourseResolver
+        },
+        canActivate: [AngularFireAuthGuard],
+        data: {
+          authGuardPipe: redirectUnauthorizedToLogin
         }
     },
     {
