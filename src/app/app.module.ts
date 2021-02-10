@@ -35,6 +35,7 @@ import {LoginComponent} from './login/login.component';
 import {CoursesCardListComponent} from './courses-card-list/courses-card-list.component';
 import {AppRoutingModule} from './app-routing.module';
 import {CourseComponent} from './course/course.component';
+import {CreateCourseComponent} from './create-course/create-course.component';
 
 
 @NgModule({
@@ -45,7 +46,8 @@ import {CourseComponent} from './course/course.component';
     CourseComponent,
     CoursesCardListComponent,
     EditCourseDialogComponent,
-    LoginComponent
+    LoginComponent,
+    CreateCourseComponent
   ],
   imports: [
     BrowserModule,

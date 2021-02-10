@@ -1,0 +1,43 @@
+<div class="create-course">
+
+    <h3>Create New Course</h3>
+
+    <form [formGroup]="form">
+
+        <mat-form-field appearance="outline">
+
+            <input placeholder="Course title" matInput formControlName="description">
+
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+
+            <mat-select placeholder="Select category" formControlName="category">
+                <mat-option value="beginner">Beginner</mat-option>
+                <mat-option value="intermediate">Intermediate</mat-option>
+                <mat-option value="advanced">Advanced</mat-option>
+            </mat-select>
+
+
+        </mat-form-field>
+
+
+        <mat-form-field appearance="outline">
+
+            <input placeholder="Course url" matInput formControlName="url">
+
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+
+            <textarea matInput placeholder="Course description" formControlName="longDescription"></textarea>
+
+        </mat-form-field>
+
+        <button mat-raised-button color="warn" [disabled]="form.invalid">Create Course</button>
+
+    </form>
+
+</div>
+
+

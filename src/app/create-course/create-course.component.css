@@ -1,0 +1,14 @@
+
+:host {
+    display: flex;
+    justify-content: center;
+}
+
+.create-course {
+    margin-top: 20px;
+}
+
+.create-course form {
+    display: flex;
+    flex-direction: column;
+}
