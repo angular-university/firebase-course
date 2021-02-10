@@ -4,6 +4,7 @@ export interface Course {
   url:string;
   longDescription: string;
   iconUrl: string;
+  seqNo:number;
   category: string;
   lessonsCount: number;
 }

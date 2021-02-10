@@ -13,9 +13,9 @@
         <mat-form-field appearance="outline">
 
             <mat-select placeholder="Select category" formControlName="category">
-                <mat-option value="beginner">Beginner</mat-option>
-                <mat-option value="intermediate">Intermediate</mat-option>
-                <mat-option value="advanced">Advanced</mat-option>
+                <mat-option value="BEGINNER">Beginner</mat-option>
+                <mat-option value="INTERMEDIATE">Intermediate</mat-option>
+                <mat-option value="ADVANCED">Advanced</mat-option>
             </mat-select>
 
 
@@ -34,7 +34,8 @@
 
         </mat-form-field>
 
-        <button mat-raised-button color="warn" [disabled]="form.invalid">Create Course</button>
+        <button mat-raised-button color="warn" (click)="onCreateCourse()"
+                [disabled]="form.invalid">Create Course</button>
 
     </form>
 

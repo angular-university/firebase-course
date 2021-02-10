@@ -33,13 +33,15 @@ export class HomeComponent implements OnInit {
 
         this.courses$ = this.coursesService.loadAllCourses();
 
-        this.beginnersCourses$ = this.courses$.pipe(
-            map(courses => courses.filter(
-                course => course.category == 'BEGINNER')));
+        this.beginnersCourses$ = this.courses$
+          .pipe(
+            map(courses => courses.filter(course => course.category == 'BEGINNER'))
+          );
 
-        this.advancedCourses$ = this.courses$.pipe(
-            map(courses => courses.filter(
-                course => course.category == "ADVANCED")));
+        this.advancedCourses$ = this.courses$
+          .pipe(
+            map(courses => courses.filter(course => course.category == "ADVANCED"))
+          );
     }
 
 
