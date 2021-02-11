@@ -71,7 +71,9 @@ export class CreateCourseComponent implements OnInit {
 
     const filePath = `courses/${this.courseId}/${file.name}`;
 
-    const task = this.storage.upload(filePath, file);
+    const task = this.storage.upload(filePath, file, {
+      cacheControl: "max-age=2592000,public",
+    });
 
     this.uploadPercent$ = task.percentageChanges();
 
@@ -87,6 +89,6 @@ export class CreateCourseComponent implements OnInit {
         })
       )
       .subscribe();
-
   }
+
 }
