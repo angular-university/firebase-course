@@ -1,10 +1,40 @@
 import * as functions from 'firebase-functions';
 import {db} from '../common/init';
+import {firestore} from 'firebase-admin/lib/firestore';
+import FieldValue = firestore.FieldValue;
+
+
 
 
 export default async (snap, context) => {
 
-  functions.logger.debug('Running add course trigger');
+  functions.logger.debug('Running add course trigger (simplified version)');
+
+  const course = snap.data();
+
+  if (course.promo) {
+    functions.logger.debug('Course in promotion, incrementing counter.');
+  }
+  else {
+    functions.logger.debug('Course NOT in promotion.');
+    return;
+  }
+
+  const batch = db.batch();
+
+  const statsRef = db.doc(`courses/stats`);
+
+  batch.update(statsRef, {
+    "totalPromo": FieldValue.increment(1)
+  });
+
+  return batch.commit();
+}
+
+
+export async function onCourseCreated(snap, context) {
+
+  functions.logger.debug('Running add course trigger (explicit transaction version)');
 
   const course = snap.data();
 
@@ -18,7 +48,7 @@ export default async (snap, context) => {
 
     if (course.promo) {
       counter.totalPromo += 1;
-      functions.logger.debug('Course in promotion, incremented counter.');
+      functions.logger.debug('Course in promotion, incrementing counter.');
     }
     else {
       functions.logger.debug('Course NOT in promotion.');
