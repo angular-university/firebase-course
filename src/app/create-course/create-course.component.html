@@ -1,41 +1,57 @@
 <div class="create-course">
 
-    <h3>Create New Course</h3>
+  <h3>Create New Course</h3>
 
-    <form [formGroup]="form">
+  <form [formGroup]="form">
 
-        <mat-form-field appearance="outline">
+    <mat-form-field appearance="outline">
 
-            <input placeholder="Course title" matInput formControlName="description">
+      <input placeholder="Course title" matInput formControlName="description">
 
-        </mat-form-field>
+    </mat-form-field>
 
-        <mat-form-field appearance="outline">
+    <div class="course-image-upload">
 
-            <mat-select placeholder="Select category" formControlName="category">
-                <mat-option value="BEGINNER">Beginner</mat-option>
-                <mat-option value="INTERMEDIATE">Intermediate</mat-option>
-                <mat-option value="ADVANCED">Advanced</mat-option>
-            </mat-select>
+      <span>Course thumbnail:</span>
 
-        </mat-form-field>
+      <input type="file" (change)="uploadThumbnail($event)">
 
-        <mat-form-field appearance="outline">
+      <div class="upload-progress" *ngIf="(uploadPercent$ | async) as percentage">
+        Upload Progress:
+        <mat-progress-bar class="progress-bar" mode="determinate" [value]="percentage">
+        </mat-progress-bar>
+        <span>{{percentage / 100 | percent}}</span>
+      </div>
 
-            <input placeholder="Course url" matInput formControlName="url">
+    </div>
 
-        </mat-form-field>
+    <mat-form-field appearance="outline">
 
-        <mat-form-field appearance="outline">
+      <mat-select placeholder="Select category" formControlName="category">
+        <mat-option value="BEGINNER">Beginner</mat-option>
+        <mat-option value="INTERMEDIATE">Intermediate</mat-option>
+        <mat-option value="ADVANCED">Advanced</mat-option>
+      </mat-select>
 
-            <textarea matInput placeholder="Course description" formControlName="longDescription"></textarea>
+    </mat-form-field>
 
-        </mat-form-field>
+    <mat-form-field appearance="outline">
 
-        <button mat-raised-button color="warn" (click)="onCreateCourse()"
-                [disabled]="form.invalid">Create Course</button>
+      <input placeholder="Course url" matInput formControlName="url">
 
-    </form>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+
+      <textarea matInput placeholder="Course description" formControlName="longDescription"></textarea>
+
+    </mat-form-field>
+
+    <button mat-raised-button color="warn" (click)="onCreateCourse()"
+            [disabled]="form.invalid">Create Course
+    </button>
+
+  </form>
 
 </div>
 

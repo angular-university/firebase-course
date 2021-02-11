@@ -1,12 +1,13 @@
-import {Component} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {AngularFirestore} from '@angular/fire/firestore';
 import {Course} from '../model/course';
 import {catchError, concatMap, map, take, tap} from 'rxjs/operators';
 import {convertSnaps} from '../services/db-utils';
-import {from, throwError} from 'rxjs';
+import {from, Observable, throwError} from 'rxjs';
 import {CoursesService} from '../services/courses.service';
 import {Router} from '@angular/router';
+import {AngularFireStorage} from '@angular/fire/storage';
 
 
 @Component({
@@ -14,7 +15,7 @@ import {Router} from '@angular/router';
   templateUrl: 'create-course.component.html',
   styleUrls: ['create-course.component.css']
 })
-export class CreateCourseComponent {
+export class CreateCourseComponent implements OnInit {
 
   form = this.fb.group({
     description: ['', Validators.required],
@@ -23,23 +24,30 @@ export class CreateCourseComponent {
     longDescription: ['', Validators.required]
   });
 
+  courseId:string;
+
+  uploadPercent$ : Observable<number>;
+
   constructor(
     private fb: FormBuilder,
     private afs: AngularFirestore,
     private courses: CoursesService,
-    private router: Router) {
+    private router: Router,
+    private storage: AngularFireStorage) {
 
+  }
+
+  ngOnInit() {
+    this.courseId = this.afs.createId();
   }
 
   onCreateCourse() {
 
     const newCourse = this.form.value as Course;
 
-    const courseId = this.afs.createId();
+    console.log("Creating course with Id: ", this.courseId);
 
-    console.log("Creating course with Id: ", courseId);
-
-    this.courses.createCourse(newCourse, courseId)
+    this.courses.createCourse(newCourse, this.courseId)
       .pipe(
         tap(course => {
           console.log("Created new course: ", course);
@@ -51,5 +59,18 @@ export class CreateCourseComponent {
           return throwError(err);
         })
       ).subscribe();
+  }
+
+
+  uploadThumbnail(event) {
+
+    const file: File = event.target.files[0];
+
+    const filePath = `courses/${this.courseId}/${file.name}`;
+
+    const task = this.storage.upload(filePath, file);
+
+    this.uploadPercent$ = task.percentageChanges();
+
   }
 }

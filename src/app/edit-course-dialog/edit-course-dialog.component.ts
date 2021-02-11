@@ -12,22 +12,18 @@ import {Observable} from 'rxjs';
     templateUrl: './edit-course-dialog.component.html',
     styleUrls: ['./edit-course-dialog.component.css']
 })
-export class EditCourseDialogComponent implements OnInit {
+export class EditCourseDialogComponent {
 
     form: FormGroup;
     description:string;
 
     course: Course;
 
-    uploadPercent$ : Observable<number>;
-
-
     constructor(
         private fb: FormBuilder,
         private dialogRef: MatDialogRef<EditCourseDialogComponent>,
         @Inject(MAT_DIALOG_DATA) course:Course,
-        private coursesService: CoursesService,
-        private storage: AngularFireStorage) {
+        private coursesService: CoursesService) {
 
         this.course = course;
 
@@ -37,23 +33,6 @@ export class EditCourseDialogComponent implements OnInit {
         });
 
     }
-
-    uploadFile(event) {
-
-        const file: File = event.target.files[0];
-
-        const filePath = `courses/${this.course.id}/${file.name}`;
-
-        const task = this.storage.upload(filePath, file);
-
-        this.uploadPercent$ = task.percentageChanges();
-
-    }
-
-    ngOnInit() {
-
-    }
-
 
     save() {
 
