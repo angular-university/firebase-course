@@ -41,7 +41,8 @@ export class CoursesService {
 
           return courses.length == 1 ? courses[0] : undefined;
         }),
-        first()
+        first(),
+        shareReplay()
       );
   }
 
@@ -55,7 +56,8 @@ export class CoursesService {
       .snapshotChanges()
       .pipe(
         map(snaps => convertSnaps<Lesson>(snaps)),
-        first()
+        first(),
+        shareReplay()
       );
 
   }
@@ -95,14 +97,37 @@ export class CoursesService {
       );
   }
 
-  saveCourse(courseId: string, changes: Partial<Course>): Observable<any> {
+  updateCourse(courseId: string, changes: Partial<Course>): Observable<any> {
     return from(this.afs.doc(`courses/${courseId}`).update(changes));
   }
 
-
   deleteCourse(courseId: string) {
-    return from(this.afs.doc(`courses/${courseId}`).delete());
+   return from(this.afs.doc(`courses/${courseId}`).delete());
   }
+
+  deleteCourseAndLessons(courseId: string) {
+    return this.afs.collection(`courses/${courseId}/lessons`)
+      .snapshotChanges()
+      .pipe(
+        concatMap(lessons => {
+
+          const batch = this.afs.firestore.batch();
+
+          const courseRef = this.afs.doc(`courses/${courseId}`).ref;
+
+          batch.delete(courseRef);
+
+          lessons.forEach(lesson => {
+            const lessonRef = this.afs.doc(`courses/${courseId}/lessons/${lesson.payload.doc.id}`).ref;
+            batch.delete(lessonRef);
+          });
+
+          return from(batch.commit());
+        })
+      );
+
+  }
+
 
 }
 

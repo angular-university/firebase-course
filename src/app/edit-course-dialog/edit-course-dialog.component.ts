@@ -38,7 +38,7 @@ export class EditCourseDialogComponent {
 
         const changes = this.form.value;
 
-        this.coursesService.saveCourse(this.course.id, {...changes})
+        this.coursesService.updateCourse(this.course.id, {...changes})
             .subscribe(
                 () => this.dialogRef.close(this.form.value)
             );
