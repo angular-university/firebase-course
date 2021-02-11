@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {AngularFirestore} from '@angular/fire/firestore';
 import {Course} from '../model/course';
-import {catchError, concatMap, map, take, tap} from 'rxjs/operators';
+import {catchError, concatMap, last, map, take, tap} from 'rxjs/operators';
 import {convertSnaps} from '../services/db-utils';
 import {from, Observable, throwError} from 'rxjs';
 import {CoursesService} from '../services/courses.service';
@@ -28,6 +28,8 @@ export class CreateCourseComponent implements OnInit {
 
   uploadPercent$ : Observable<number>;
 
+  iconUrl:string;
+
   constructor(
     private fb: FormBuilder,
     private afs: AngularFirestore,
@@ -43,7 +45,9 @@ export class CreateCourseComponent implements OnInit {
 
   onCreateCourse() {
 
-    const newCourse = this.form.value as Course;
+    const newCourse = {...this.form.value} as Course;
+
+    newCourse.iconUrl = this.iconUrl;
 
     console.log("Creating course with Id: ", this.courseId);
 
@@ -61,7 +65,6 @@ export class CreateCourseComponent implements OnInit {
       ).subscribe();
   }
 
-
   uploadThumbnail(event) {
 
     const file: File = event.target.files[0];
@@ -71,6 +74,19 @@ export class CreateCourseComponent implements OnInit {
     const task = this.storage.upload(filePath, file);
 
     this.uploadPercent$ = task.percentageChanges();
+
+    task.snapshotChanges()
+      .pipe(
+        last(),
+        concatMap(() => this.storage.ref(filePath).getDownloadURL()),
+        tap(url => this.iconUrl = url),
+        catchError(err => {
+          console.log(err);
+          alert("Could not create thumbnail url.");
+          return throwError(err);
+        })
+      )
+      .subscribe();
 
   }
 }
