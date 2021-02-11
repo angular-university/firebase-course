@@ -7,4 +7,5 @@ export interface Course {
   seqNo:number;
   category: string;
   lessonsCount: number;
+  promo:boolean;
 }

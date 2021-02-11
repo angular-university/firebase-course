@@ -21,7 +21,8 @@ export class CreateCourseComponent implements OnInit {
     description: ['', Validators.required],
     url: ['', Validators.required],
     category: ['BEGINNER', Validators.required],
-    longDescription: ['', Validators.required]
+    longDescription: ['', Validators.required],
+    promo: [false]
   });
 
   courseId:string;

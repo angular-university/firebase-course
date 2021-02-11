@@ -36,7 +36,7 @@ import {CoursesCardListComponent} from './courses-card-list/courses-card-list.co
 import {AppRoutingModule} from './app-routing.module';
 import {CourseComponent} from './course/course.component';
 import {CreateCourseComponent} from './create-course/create-course.component';
-
+import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 
 @NgModule({
   declarations: [
@@ -58,6 +58,7 @@ import {CreateCourseComponent} from './create-course/create-course.component';
     MatCardModule,
     MatTabsModule,
     MatSidenavModule,
+    MatSlideToggleModule,
     MatListModule,
     MatToolbarModule,
     MatInputModule,

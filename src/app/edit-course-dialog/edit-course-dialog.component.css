@@ -4,6 +4,10 @@
     display: block;
 }
 
+.promo {
+  margin-bottom: 20px;
+}
+
 textarea {
     height: 100px;
     resize: vertical;

@@ -29,7 +29,8 @@ export class EditCourseDialogComponent {
 
         this.form = fb.group({
             description: [course.description, Validators.required],
-            longDescription: [course.longDescription,Validators.required]
+            longDescription: [course.longDescription,Validators.required],
+            promo: [course.promo]
         });
 
     }

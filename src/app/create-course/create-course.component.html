@@ -48,6 +48,10 @@
 
     </mat-form-field>
 
+    <mat-slide-toggle class="promo" color="primary" formControlName="promo">
+      Course in promotion?
+    </mat-slide-toggle>
+
     <button mat-raised-button color="warn" (click)="onCreateCourse()"
             [disabled]="form.invalid || !iconUrl">Create Course
     </button>

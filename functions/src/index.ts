@@ -7,3 +7,12 @@ import * as functions from "firebase-functions";
    functions.logger.info("Hello logs!", {structuredData: true});
    response.send("Hello from Firebase!");
  });
+
+ export const onAddCourseUpdatePromoCounter = functions.runWith({
+  timeoutSeconds: 300,
+  // memory: '1GB'
+}).firestore.document('courses/{courseId}')
+  .onCreate(async (snap, context) => {
+    await (await import('./promotions-counter/on-course-added')).default(snap, context);
+  });
+

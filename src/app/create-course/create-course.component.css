@@ -25,6 +25,9 @@
   flex-direction: column;
 }
 
+.promo {
+  margin-bottom: 20px;
+}
 
 .course-image-upload span {
   margin-bottom:10px;
@@ -44,3 +47,4 @@
 .uploaded-image {
   max-width: 250px;
 }
+
