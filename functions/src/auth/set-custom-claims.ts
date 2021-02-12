@@ -2,11 +2,12 @@ import * as functions from 'firebase-functions';
 
 const admin = require('firebase-admin');
 
-export default async (request, response) => {
+export default async (snap, context) => {
 
-  functions.logger.info("Setting custom claims");
+  functions.logger.debug(`Setting custom claims for userId ${context.params.userId}`);
 
-  await admin.auth().setCustomUserClaims(uid, { admin: true });
+  const user = snap.data();
 
-  response.send("Hello from Firebase!");
+  return admin.auth().setCustomUserClaims(snap.id, { admin: user.admin });
+
 }
