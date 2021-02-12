@@ -5,6 +5,7 @@ import {catchError, map} from 'rxjs/operators';
 import {AngularFirestore} from '@angular/fire/firestore';
 import {CoursesService} from '../services/courses.service';
 import {UserService} from '../services/user.service';
+import {Router} from '@angular/router';
 
 
 @Component({
@@ -22,7 +23,8 @@ export class HomeComponent implements OnInit {
 
     constructor(
       private coursesService: CoursesService,
-      public user: UserService) {
+      public user: UserService,
+      private router: Router) {
 
     }
 
@@ -34,7 +36,14 @@ export class HomeComponent implements OnInit {
 
     reloadCourses() {
 
-        this.courses$ = this.coursesService.loadAllCourses();
+        this.courses$ = this.coursesService.loadAllCourses()
+          .pipe(
+            catchError(err => {
+              console.log(err);
+              this.router.navigateByUrl('/login');
+              return of([]);
+            }),
+          );
         this.beginnersCourses$ = this.courses$
           .pipe(
             map(courses => courses.filter(course => course.category == 'BEGINNER'))

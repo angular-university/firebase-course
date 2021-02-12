@@ -1,0 +1,31 @@
+<div class="create-user">
+
+  <h3>Create New User</h3>
+
+  <form [formGroup]="form">
+
+    <mat-form-field appearance="outline">
+
+      <input placeholder="User email" matInput formControlName="email">
+
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+
+      <input placeholder="User password" matInput formControlName="password">
+
+    </mat-form-field>
+
+    <mat-slide-toggle class="promo" color="primary" formControlName="admin">
+      Is the user an administrator?
+    </mat-slide-toggle>
+
+    <button mat-raised-button color="warn" (click)="onCreateUser()"
+            [disabled]="form.invalid">Create User
+    </button>
+
+  </form>
+
+</div>
+
+

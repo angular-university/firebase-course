@@ -26,11 +26,6 @@ export class CoursesService {
         map(snaps => convertSnaps<Course>(snaps)),
         tap(console.log),
         first(),
-        catchError(err => {
-          console.log(err);
-          alert("Could not load courses.");
-          return of([]);
-        }),
         shareReplay()
       );
   }

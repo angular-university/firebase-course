@@ -37,6 +37,8 @@ import {AppRoutingModule} from './app-routing.module';
 import {CourseComponent} from './course/course.component';
 import {CreateCourseComponent} from './create-course/create-course.component';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
+import {CreateUserComponent} from './create-user/create-user.component';
+import {HttpClientModule} from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -47,7 +49,8 @@ import {MatSlideToggleModule} from '@angular/material/slide-toggle';
     CoursesCardListComponent,
     EditCourseDialogComponent,
     LoginComponent,
-    CreateCourseComponent
+    CreateCourseComponent,
+    CreateUserComponent
   ],
   imports: [
     BrowserModule,
@@ -72,6 +75,7 @@ import {MatSlideToggleModule} from '@angular/material/slide-toggle';
     MatDatepickerModule,
     ReactiveFormsModule,
     AppRoutingModule,
+    HttpClientModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
     AngularFireStorageModule,

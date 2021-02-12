@@ -4,6 +4,7 @@ import {from, Observable} from 'rxjs';
 import {concatMap, filter, map} from 'rxjs/operators';
 import {AngularFirestore} from '@angular/fire/firestore';
 import {Router} from '@angular/router';
+import {UserService} from './services/user.service';
 
 @Component({
   selector: 'app-root',
@@ -21,8 +22,8 @@ export class AppComponent implements OnInit {
   constructor(
     private afs: AngularFirestore,
     private afAuth: AngularFireAuth,
-    private router: Router) {
-
+    private router: Router,
+    public user: UserService) {
 
   }
 
@@ -33,6 +34,7 @@ export class AppComponent implements OnInit {
     this.isLoggedOut$ = this.isLoggedIn$.pipe(map(loggedIn => !loggedIn));
 
     this.pictureUrl$ = this.afAuth.authState.pipe(map(user => user ? user.photoURL : null));
+
   }
 
   logout() {
