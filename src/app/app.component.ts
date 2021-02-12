@@ -5,6 +5,7 @@ import {concatMap, filter, map} from 'rxjs/operators';
 import {AngularFirestore} from '@angular/fire/firestore';
 import {Router} from '@angular/router';
 import {UserService} from './services/user.service';
+import {AuthTokenService} from './services/auth-token.service';
 
 @Component({
   selector: 'app-root',
@@ -23,7 +24,8 @@ export class AppComponent implements OnInit {
     private afs: AngularFirestore,
     private afAuth: AngularFireAuth,
     private router: Router,
-    public user: UserService) {
+    public user: UserService,
+    private token: AuthTokenService) {
 
   }
 

@@ -11,7 +11,7 @@ import {CreateUserComponent} from './create-user/create-user.component';
 
 const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo(['login']);
 
-const adminOnly = () => hasCustomClaim('admin');
+const adminOnly = () => hasCustomClaim('admin') && redirectUnauthorizedToLogin();
 
 const routes: Routes = [
   {
@@ -28,7 +28,11 @@ const routes: Routes = [
   },
   {
     path: 'create-user',
-    component: CreateUserComponent
+    component: CreateUserComponent,
+    canActivate: [AngularFireAuthGuard],
+    data: {
+      authGuardPipe: adminOnly
+    }
   },
   {
     path: 'about',
