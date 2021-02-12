@@ -1,6 +1,6 @@
 import * as functions from 'firebase-functions';
+import {auth} from '../common/init';
 
-const admin = require('firebase-admin');
 
 export default async (snap, context) => {
 
@@ -8,6 +8,6 @@ export default async (snap, context) => {
 
   const user = snap.data();
 
-  return admin.auth().setCustomUserClaims(snap.id, { admin: user.admin });
+  return auth.setCustomUserClaims(snap.id, { admin: user.admin });
 
 }

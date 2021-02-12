@@ -1,11 +1,11 @@
 
-<div class="courses-panel">
+<div class="courses-panel" *ngIf="(user.roles$ | async) as roles">
 
     <div class="header">
 
         <h2 class="title">All Courses</h2>
 
-        <button mat-mini-fab color="accent" routerLink="/create-course">
+        <button mat-mini-fab color="accent" routerLink="/create-course" *ngIf="roles.admin">
             <mat-icon class="add-course-btn">add</mat-icon>
         </button>
 

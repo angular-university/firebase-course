@@ -6,6 +6,7 @@ import {CoursesService} from '../services/courses.service';
 import {catchError, tap} from 'rxjs/operators';
 import {throwError} from 'rxjs';
 import {Router} from '@angular/router';
+import {UserService} from '../services/user.service';
 
 @Component({
     selector: 'courses-card-list',
@@ -26,7 +27,8 @@ export class CoursesCardListComponent implements OnInit {
     constructor(
       private dialog: MatDialog,
       private coursesDB: CoursesService,
-      private router: Router) {
+      private router: Router,
+      public user: UserService) {
     }
 
     ngOnInit() {

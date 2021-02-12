@@ -28,13 +28,6 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
 
-    this.afAuth.authState
-      .pipe(
-        filter(user => !!user),
-        concatMap(user => from(user.getIdTokenResult()))
-      )
-      .subscribe(token => console.log("Auth user claims:", token.claims));
-
     this.isLoggedIn$ = this.afAuth.authState.pipe(map(user => !!user));
 
     this.isLoggedOut$ = this.isLoggedIn$.pipe(map(loggedIn => !loggedIn));
