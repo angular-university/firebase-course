@@ -15,14 +15,13 @@ service cloud.firestore {
 
      function isValidCourse() {
      	return request.resource.data.seqNo is number
-      			&& request.resource.data.lessonsCount is number
-            && request.resource.data.lessonsCount > 0
+      			&& request.resource.data.seqNo >= 0
             && isNonEmptyString("url");
      }
 
      function isAdmin() {
-       return isAuthenticated() && request.auth.token.admin;
-          // get( /databases/$(database)/documents/users/$(request.auth.uid)).data.isAdmin == true;
+       return isAuthenticated() && 'admin' in request.auth.token && request.auth.token.admin == true;
+          // get( /databases/$(database)/documents/users/$(request.auth.uid)).data.admin == true;
      }
 
      function isKnownUser() {
@@ -32,8 +31,8 @@ service cloud.firestore {
 
      match /courses/{courseId} {
      	allow read: if isKnownUser();
-      allow write: if isAdmin() && isValidCourse()
-      && resource.data.status == 'draft';
+      allow write: if isAdmin() && isValidCourse();
+      //&& resource.data.status == 'draft';
 
       match /lessons/{lessonId} {
        allow read: if isKnownUser();

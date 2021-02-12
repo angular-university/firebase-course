@@ -1,8 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import {AngularFireAuth} from '@angular/fire/auth';
-import {Observable} from 'rxjs';
-import {map} from 'rxjs/operators';
+import {from, Observable} from 'rxjs';
+import {concatMap, filter, map} from 'rxjs/operators';
 import {AngularFirestore} from '@angular/fire/firestore';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -17,14 +18,22 @@ export class AppComponent implements OnInit {
 
   pictureUrl$: Observable<string>;
 
-  constructor(private afs: AngularFirestore, private afAuth: AngularFireAuth) {
+  constructor(
+    private afs: AngularFirestore,
+    private afAuth: AngularFireAuth,
+    private router: Router) {
 
 
   }
 
   ngOnInit() {
 
-    this.afAuth.authState.subscribe(user => console.log("Auth user:", user));
+    this.afAuth.authState
+      .pipe(
+        filter(user => !!user),
+        concatMap(user => from(user.getIdTokenResult()))
+      )
+      .subscribe(token => console.log("Auth user claims:", token.claims));
 
     this.isLoggedIn$ = this.afAuth.authState.pipe(map(user => !!user));
 
@@ -36,6 +45,7 @@ export class AppComponent implements OnInit {
   logout() {
 
     this.afAuth.signOut();
+    this.router.navigateByUrl("/login");
 
   }
 

@@ -8,6 +8,10 @@ import * as functions from "firebase-functions";
    response.send("Hello from Firebase!");
  });
 
+export const setUserCustomClaims = functions.https.onRequest(async (request, response) => {
+  await (await import('./auth/set-custom-claims')).default(request, response);
+});
+
  export const onAddCourseUpdatePromoCounter = functions.runWith({
   timeoutSeconds: 300,
   // memory: '1GB'

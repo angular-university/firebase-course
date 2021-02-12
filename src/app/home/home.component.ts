@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Course} from '../model/course';
-import {Observable} from 'rxjs';
-import {map} from 'rxjs/operators';
+import {Observable, of} from 'rxjs';
+import {catchError, map} from 'rxjs/operators';
 import {AngularFirestore} from '@angular/fire/firestore';
 import {CoursesService} from '../services/courses.service';
 
@@ -32,7 +32,6 @@ export class HomeComponent implements OnInit {
     reloadCourses() {
 
         this.courses$ = this.coursesService.loadAllCourses();
-
         this.beginnersCourses$ = this.courses$
           .pipe(
             map(courses => courses.filter(course => course.category == 'BEGINNER'))
