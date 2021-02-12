@@ -16,3 +16,14 @@ import * as functions from "firebase-functions";
     await (await import('./promotions-counter/on-course-added')).default(snap, context);
   });
 
+ export const onCourseDeletedUpdatePromoCounter =
+   functions.firestore.document("courses/{courseId}")
+     .onDelete(async (snap, context) => {
+       await (await import('./promotions-counter/on-course-deleted')).default(snap, context);
+     });
+
+export const onCourseUpdatedUpdatePromoCounter = functions.firestore
+  .document('courses/{courseId}')
+  .onUpdate(async (snap, context) => {
+    await (await import('./promotions-counter/on-course-updated')).default(snap, context);
+  });

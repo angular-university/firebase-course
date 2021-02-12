@@ -8,7 +8,7 @@ import FieldValue = firestore.FieldValue;
 
 export default async (snap, context) => {
 
-  functions.logger.debug('Running add course trigger (simplified version)');
+  functions.logger.debug(`Running add course trigger for courseId ${context.params.courseId}`);
 
   const course = snap.data();
 
@@ -20,6 +20,7 @@ export default async (snap, context) => {
     return;
   }
 
+/*
   const batch = db.batch();
 
   const statsRef = db.doc(`courses/stats`);
@@ -29,6 +30,13 @@ export default async (snap, context) => {
   });
 
   return batch.commit();
+
+ */
+
+  return db.doc(`courses/stats`).update({
+    "totalPromo": FieldValue.increment(1)
+  });
+
 }
 
 
