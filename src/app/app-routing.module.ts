@@ -16,7 +16,11 @@ const adminOnly = () => hasCustomClaim('admin') && redirectUnauthorizedToLogin()
 const routes: Routes = [
   {
     path: '',
-    component: HomeComponent
+    component: HomeComponent,
+    canActivate: [AngularFireAuthGuard],
+    data: {
+      authGuardPipe: redirectUnauthorizedToLogin
+    }
   },
   {
     path: 'create-course',

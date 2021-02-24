@@ -5,7 +5,7 @@ export interface Course {
   longDescription: string;
   iconUrl: string;
   seqNo:number;
-  category: string;
+  categories: string[];
   lessonsCount: number;
   promo:boolean;
 }
