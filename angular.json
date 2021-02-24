@@ -6,7 +6,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "try-emulator": {
+    "firebase-course": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -16,7 +16,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/try-emulator",
+            "outputPath": "dist",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -65,18 +65,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "try-emulator:build"
+            "browserTarget": "firebase-course:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "try-emulator:build:production"
+              "browserTarget": "firebase-course:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "try-emulator:build"
+            "browserTarget": "firebase-course:build"
           }
         },
         "test": {
@@ -114,16 +114,16 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "try-emulator:serve"
+            "devServerTarget": "firebase-course:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "try-emulator:serve:production"
+              "devServerTarget": "firebase-course:serve:production"
             }
           }
         }
       }
     }
   },
-  "defaultProject": "try-emulator"
+  "defaultProject": "firebase-course"
 }
