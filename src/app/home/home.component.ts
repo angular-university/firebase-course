@@ -32,7 +32,7 @@ export class HomeComponent implements OnInit {
 
         this.reloadCourses();
 
-        this.coursesService.collectionGroupQueryExample().subscribe(console.log);
+        // this.coursesService.collectionGroupQueryExample().subscribe(console.log);
 
     }
 
