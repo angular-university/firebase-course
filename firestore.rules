@@ -40,6 +40,11 @@ service cloud.firestore {
       }
 
      }
+
+     match /{path=**}/lessons/{lessonId} {
+       allow read: if isKnownUser();
+     }
+
   }
 
 }

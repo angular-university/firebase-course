@@ -138,9 +138,17 @@ export class CoursesService {
           return from(batch.commit());
         })
       );
-
   }
 
+  collectionGroupQueryExample() {
+    return this.afs.collectionGroup("lessons", ref => ref.where("seqNo", '==', 1))
+      .snapshotChanges()
+      .pipe(
+        map(snaps => convertSnaps<Course>(snaps)),
+        first(),
+        shareReplay()
+      )
+  }
 
 }
 
