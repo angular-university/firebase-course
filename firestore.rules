@@ -41,6 +41,7 @@ service cloud.firestore {
 
      }
 
+     // this rule targets collection group queries on nested lessons collections
      match /{path=**}/lessons/{lessonId} {
        allow read: if isKnownUser();
      }
