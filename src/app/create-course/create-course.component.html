@@ -52,6 +52,13 @@
       Course in promotion?
     </mat-slide-toggle>
 
+    <mat-form-field appearance="outline">
+      <mat-label>Promotion start date</mat-label>
+      <input matInput [matDatepicker]="promoStartPicker" formControlName="promoStartAt">
+      <mat-datepicker-toggle matSuffix [for]="promoStartPicker"></mat-datepicker-toggle>
+      <mat-datepicker #promoStartPicker></mat-datepicker>
+    </mat-form-field>
+
     <button mat-raised-button color="warn" (click)="onCreateCourse()"
             [disabled]="form.invalid || !iconUrl">Create Course
     </button>

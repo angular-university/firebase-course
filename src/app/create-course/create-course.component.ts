@@ -8,7 +8,8 @@ import {from, Observable, throwError} from 'rxjs';
 import {CoursesService} from '../services/courses.service';
 import {Router} from '@angular/router';
 import {AngularFireStorage} from '@angular/fire/storage';
-
+import firebase from 'firebase/app';
+import Timestamp = firebase.firestore.Timestamp;
 
 @Component({
   selector: 'create-course',
@@ -22,7 +23,8 @@ export class CreateCourseComponent implements OnInit {
     url: ['', Validators.required],
     category: ['BEGINNER', Validators.required],
     longDescription: ['', Validators.required],
-    promo: [false]
+    promo: [false],
+    promoStartAt: [null]
   });
 
   courseId:string;
@@ -46,9 +48,11 @@ export class CreateCourseComponent implements OnInit {
 
   onCreateCourse() {
 
-    const newCourse = {...this.form.value} as Course;
+    const newCourse: Course = {...this.form.value} as Course;
 
     newCourse.iconUrl = this.iconUrl;
+
+    newCourse.promoStartAt = Timestamp.fromDate(this.form.value.promoStartAt);
 
     console.log("Creating course with Id: ", this.courseId);
 

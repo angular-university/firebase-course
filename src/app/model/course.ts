@@ -1,3 +1,6 @@
+import firebase from 'firebase/app';
+import Timestamp = firebase.firestore.Timestamp;
+
 export interface Course {
   id: string;
   description: string;
@@ -8,4 +11,6 @@ export interface Course {
   categories: string[];
   lessonsCount: number;
   promo:boolean;
+  promoStartAt: Timestamp;
 }
+

@@ -40,6 +40,7 @@ import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import {CreateUserComponent} from './create-user/create-user.component';
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {AuthInterceptor} from './services/auth.interceptor';
+import {MatNativeDateModule} from '@angular/material/core';
 
 @NgModule({
   declarations: [
@@ -74,6 +75,7 @@ import {AuthInterceptor} from './services/auth.interceptor';
     MatDialogModule,
     MatSelectModule,
     MatDatepickerModule,
+    MatNativeDateModule,
     ReactiveFormsModule,
     AppRoutingModule,
     HttpClientModule,
