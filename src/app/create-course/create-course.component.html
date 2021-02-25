@@ -2,11 +2,11 @@
 
   <h3>Create New Course</h3>
 
-  <form [formGroup]="form">
+  <form>
 
     <mat-form-field appearance="outline">
 
-      <input placeholder="Course title" matInput formControlName="description">
+      <input placeholder="Course title" matInput>
 
     </mat-form-field>
 
@@ -14,21 +14,13 @@
 
       <span>Course thumbnail:</span>
 
-      <img class="course-thumbnail mat-elevation-z3" *ngIf="iconUrl" [src]="iconUrl">
-
-      <input type="file" (change)="uploadThumbnail($event)">
-
-      <div class="upload-progress" *ngIf="(uploadPercent$ | async) as percentage">
-        <mat-progress-bar class="progress-bar" mode="determinate" [value]="percentage">
-        </mat-progress-bar>
-        <span>{{percentage / 100 | percent}}</span>
-      </div>
+      <img class="course-thumbnail mat-elevation-z3">
 
     </div>
 
     <mat-form-field appearance="outline">
 
-      <mat-select placeholder="Select category" formControlName="category">
+      <mat-select placeholder="Select category">
         <mat-option value="BEGINNER">Beginner</mat-option>
         <mat-option value="INTERMEDIATE">Intermediate</mat-option>
         <mat-option value="ADVANCED">Advanced</mat-option>
@@ -38,29 +30,29 @@
 
     <mat-form-field appearance="outline">
 
-      <input placeholder="Course url" matInput formControlName="url">
+      <input placeholder="Course url" matInput>
 
     </mat-form-field>
 
     <mat-form-field appearance="outline">
 
-      <textarea matInput placeholder="Course description" formControlName="longDescription"></textarea>
+      <textarea matInput placeholder="Course description"></textarea>
 
     </mat-form-field>
 
-    <mat-slide-toggle class="promo" color="primary" formControlName="promo">
+    <mat-slide-toggle class="promo" color="primary">
       Course in promotion?
     </mat-slide-toggle>
 
     <mat-form-field appearance="outline">
       <mat-label>Promotion start date</mat-label>
-      <input matInput [matDatepicker]="promoStartPicker" formControlName="promoStartAt">
+      <input matInput [matDatepicker]="promoStartPicker">
       <mat-datepicker-toggle matSuffix [for]="promoStartPicker"></mat-datepicker-toggle>
       <mat-datepicker #promoStartPicker></mat-datepicker>
     </mat-form-field>
 
-    <button mat-raised-button color="warn" (click)="onCreateCourse()"
-            [disabled]="form.invalid || !iconUrl">Create Course
+    <button mat-raised-button color="warn">
+      Create Course
     </button>
 
   </form>

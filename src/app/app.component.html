@@ -1,4 +1,4 @@
-<mat-sidenav-container fullscreen *ngIf="(user.roles$ | async) as roles">
+<mat-sidenav-container fullscreen>
 
   <mat-sidenav #start (click)="start.close()">
     <mat-nav-list>
@@ -8,7 +8,7 @@
         <span>Courses</span>
       </a>
 
-      <a mat-list-item routerLink="/create-user" *ngIf="roles.admin">
+      <a mat-list-item routerLink="/create-user">
         <mat-icon>add_circle_outline</mat-icon>
         <span>Create user</span>
       </a>
@@ -17,17 +17,17 @@
         <mat-icon>question_answer</mat-icon>
         <span>About</span>
       </a>
-      <a mat-list-item routerLink="login" *ngIf="isLoggedOut$ | async">
+      <a mat-list-item routerLink="login">
         <mat-icon>person_add</mat-icon>
         <span>Register</span>
       </a>
 
-      <a mat-list-item routerLink="login" *ngIf="isLoggedOut$ | async">
+      <a mat-list-item routerLink="login">
         <mat-icon>account_circle</mat-icon>
         <span>Login</span>
       </a>
 
-      <a mat-list-item (click)="logout()" *ngIf="isLoggedIn$ | async">
+      <a mat-list-item>
         <mat-icon>exit_to_app</mat-icon>
         <span>Logout</span>
       </a>
@@ -46,9 +46,9 @@
 
       <div class="filler"></div>
 
-      <ng-container *ngIf="(pictureUrl$ | async) as pictureUrl">
+      <ng-container>
 
-        <img class="user-avatar" [src]="pictureUrl">
+        <img class="user-avatar">
 
       </ng-container>
 

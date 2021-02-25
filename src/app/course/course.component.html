@@ -1,8 +1,8 @@
 <div class="course">
 
-    <h2>{{course?.description}}</h2>
+    <h2></h2>
 
-    <img class="course-thumbnail mat-elevation-z8" [src]="course?.iconUrl">
+    <img class="course-thumbnail mat-elevation-z8">
 
     <div class="spinner-container" *ngIf="loading">
 
@@ -10,7 +10,7 @@
 
     </div>
 
-    <mat-table class="lessons-table mat-elevation-z8" [dataSource]="lessons">
+    <mat-table class="lessons-table mat-elevation-z8">
 
         <ng-container matColumnDef="seqNo">
 
@@ -45,8 +45,9 @@
     </mat-table>
 
 
-    <button class="bottom-toolbar" mat-raised-button color="primary"
-            (click)="loadMore()">Load More</button>
+    <button class="bottom-toolbar" mat-raised-button color="primary">
+      Load More
+    </button>
 
 </div>
 
