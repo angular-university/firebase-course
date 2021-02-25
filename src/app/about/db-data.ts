@@ -4,7 +4,7 @@ export const COURSES: any = {
     id: 20,
     description: 'Firebase & AngularFire In Depth',
     longDescription: 'Full stack Development with Angular, AngularFire, Firestore, Firebase Storage, Hosting & Cloud Functions.',
-    iconUrl: 'https://angular-university.s3-us-west-1.amazonaws.com/course-images/firebase-course-2.jpg',
+    iconUrl: 'https://angular-university.s3-us-west-1.amazonaws.com/course-images/firebase-course-1.jpg',
     lessonsCount: 10,
     categories: ['BEGINNER'],
     seqNo: 0,
