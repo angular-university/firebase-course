@@ -1,7 +1,9 @@
 
 const admin = require('firebase-admin');
 
-admin.initializeApp();
+admin.initializeApp({
+  databaseURL: ""
+});
 
 export const db = admin.firestore();
 

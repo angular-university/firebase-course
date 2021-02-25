@@ -31,8 +31,9 @@ service cloud.firestore {
 
      match /courses/{courseId} {
      	allow read: if isKnownUser();
-      allow write: if isAdmin() && isValidCourse();
-      //&& resource.data.status == 'draft';
+      allow create, update: if  isAdmin() && isValidCourse();
+      allow delete: if isAdmin();
+      // && resource.data.status == 'draft';
 
       match /lessons/{lessonId} {
        allow read: if isKnownUser();
