@@ -1,27 +1,39 @@
-# TryEmulator
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.1.2.
+## Firebase & AngularFire In Depth 
 
-## Development server
+This repository currently contains the code for the [Firebase & AngularFire In Depth](https://angular-university.io/course/angularfire-course):
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+![Firebase & AngularFire In Depth](https://angular-university.s3-us-west-1.amazonaws.com/course-images/firebase-course-1.jpg)
 
-## Code scaffolding
+You can find the starting point of the course in the [1-start branch](https://github.com/angular-university/firebase-course/tree/1-start).
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+# Installation pre-requisites
 
-## Build
+IMPORTANT: Please use Node 14 LST (Long Term Support version).
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+# Installing the Angular CLI
 
-## Running unit tests
+With the following command the angular-cli will be installed globally in your machine:
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+    npm install -g @angular/cli 
 
-## Running end-to-end tests
+# How To install this repository
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+We can install the master branch using the following commands:
 
-## Further help
+    git clone https://github.com/angular-university/firebase-course.git
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+    cd firebase-course
+    npm ci
+
+Note: We recommend using npm ci, instead of npm install. This will ensure that you use the exact dependency versions set on package-lock.json, unlike npm install which might potentially change those versions.
+
+# To run the Development UI Server
+
+To run the frontend part of our code, we will use the Angular CLI:
+
+    npm start 
+
+The application is visible at port 4200: [http://localhost:4200](http://localhost:4200)
+
+
