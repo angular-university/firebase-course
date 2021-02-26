@@ -1,14 +1,27 @@
 
-## Serverless Angular with Firebase & AngularFire Course
+# IMPORTANT
 
-This repository contains the code of the [Serverless Angular with Firebase & AngularFire Course](https://angular-university.io/course/firebase-course).
+This repository currently contains the code for two versions of the course. If you are looking for the new version of the course, which is currently being recorded. 
+
+Are you looking for the new Firebase & AngularFire In Depth course?
+
+[Firebase & AngularFire In Depth](https://angular-university.io/course/angularfire-course)
+
+![Firebase & AngularFire In Depth](https://angular-university.s3-us-west-1.amazonaws.com/course-images/firebase-course-1.jpg)
+
+If so you can find the course code in the [1-start branch](https://github.com/angular-university/firebase-course/tree/1-start).
+
+### Looking for the previous version of the course?
+
+If so, the master branch of this repository contains the completed version of the [Serverless Angular with Firebase & AngularFire Course](https://angular-university.io/course/firebase-course).
 
 ![Serverless Angular with Firebase & AngularFire Course](https://s3-us-west-1.amazonaws.com/angular-university/course-images/serverless-angular-small.png)
 
+You can also find the starting point of this previous version of the course in the [1-firebase branch](https://github.com/angular-university/firebase-course/tree/1-firebase).
 
 # Installation pre-requisites
 
-IMPORTANT: Please use Node 12 (Long Term Support version).
+IMPORTANT: Please use Node 12 for the old version of the course, and Node 14 for the new version.
 
 
 # Installing the Angular CLI
