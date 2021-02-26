@@ -7,7 +7,7 @@ This repository currently contains the code for two versions of the course. Are 
 
 ![Firebase & AngularFire In Depth](https://angular-university.s3-us-west-1.amazonaws.com/course-images/firebase-course-1.jpg)
 
-If so you can find the course code in the [1-start branch](https://github.com/angular-university/firebase-course/tree/1-start).
+You can find the starting point of this new course in the [1-start branch](https://github.com/angular-university/firebase-course/tree/1-start).
 
 ### Looking for the previous version of the course?
 
