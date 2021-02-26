@@ -1,9 +1,7 @@
 
 # IMPORTANT
 
-This repository currently contains the code for two versions of the course. If you are looking for the new version of the course, which is currently being recorded. 
-
-Are you looking for the new Firebase & AngularFire In Depth course?
+This repository currently contains the code for two versions of the course. Are you looking for the new Firebase & AngularFire In Depth course, which is currently being recorded?
 
 [Firebase & AngularFire In Depth](https://angular-university.io/course/angularfire-course)
 
