@@ -28,6 +28,7 @@ export class AboutComponent  {
       console.log(`Uploading course ${course['description']}`);
       for (const lesson of courseLessons) {
         const newLesson = this.removeId(lesson);
+        delete newLesson.courseId;
         await lessons.add(newLesson);
       }
     }
