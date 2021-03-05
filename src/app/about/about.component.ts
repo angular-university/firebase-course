@@ -55,8 +55,10 @@ export class AboutComponent  {
 
     onReadCollection() {
       this.db.collection(
-          "/courses/41FqgKQ1nzkSL2RF1xHv/lessons",
-          ref => ref.where("seqNo", "<=", 5).orderBy("seqNo")
+          "courses",
+          ref => ref.where("seqNo", "<=", 20)
+              .where("url", "==", "angular-forms-course")
+              .orderBy("seqNo")
       ).get()
           .subscribe(snaps => {
 
