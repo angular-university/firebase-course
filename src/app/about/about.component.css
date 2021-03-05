@@ -1,18 +1,18 @@
 .course-image {
-  max-width: 350px;
-  border-radius: 4px;
+    max-width: 350px;
+    border-radius: 4px;
 }
 
 
 .about {
-  padding: 40px;
+    padding: 40px;
 }
 
 .upload-btn {
-  display: block;
-  margin-top: 30px;
+    margin-top: 30px;
 }
 
 button {
     margin-bottom: 10px;
+    display: block;
 }
