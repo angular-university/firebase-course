@@ -54,7 +54,10 @@ export class AboutComponent  {
     }
 
     onReadCollection() {
-      this.db.collection("courses").get()
+      this.db.collection(
+          "/courses/41FqgKQ1nzkSL2RF1xHv/lessons",
+          ref => ref.where("seqNo", "<=", 5).orderBy("seqNo")
+      ).get()
           .subscribe(snaps => {
 
               snaps.forEach(snap => {
