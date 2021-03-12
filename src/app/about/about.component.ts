@@ -5,6 +5,7 @@ import 'firebase/firestore';
 
 import {AngularFirestore} from '@angular/fire/firestore';
 import {COURSES, findLessonsForCourse} from './db-data';
+import {first, take} from "rxjs/operators";
 
 
 
@@ -43,11 +44,11 @@ export class AboutComponent  {
 
     onReadDoc() {
 
-      this.db.doc("/courses/3ZhoNEWSGUcfWOV8IifA").get()
-          .subscribe(snap => {
+      this.db.doc("courses/1CErZJychQ4KET9Yi96K")
+          .valueChanges()
+          .subscribe(course => {
 
-              console.log(snap.id);
-              console.log(snap.data());
+              console.log(course);
 
           });
 
