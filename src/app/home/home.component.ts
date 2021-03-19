@@ -26,6 +26,16 @@ export class HomeComponent implements OnInit {
 
     ngOnInit() {
 
+        this.reloadCourses();
+
+    }
+
+    reloadCourses() {
+
+        this.beginnersCourses$ = this.coursesService.loadCoursesByCategory("BEGINNER");
+
+        this.advancedCourses$ = this.coursesService.loadCoursesByCategory("ADVANCED");
+
     }
 
 }
