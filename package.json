@@ -1,5 +1,5 @@
 {
-  "name": "try-emulator",
+  "name": "angularfire-course",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
@@ -9,6 +9,7 @@
     "lint": "ng lint",
     "e2e": "ng e2e",
     "firebase": "firebase",
+    "local-dev": "firebase emulators:start --only firestore --import test-data",
     "empty-emulator": "firebase emulators:start",
     "emulator": "firebase emulators:start --import test-data",
     "export": "firebase emulators:export test-data"

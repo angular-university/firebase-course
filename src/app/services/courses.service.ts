@@ -2,7 +2,7 @@ import {Injectable} from "@angular/core";
 import {AngularFirestore} from "@angular/fire/firestore";
 import {Observable} from "rxjs";
 import {Course} from "../model/course";
-import {map} from "rxjs/operators";
+import {map,tap} from "rxjs/operators";
 import {convertSnaps} from "./db-utils";
 
 
