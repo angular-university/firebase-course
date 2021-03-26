@@ -82,7 +82,10 @@ import {MatNativeDateModule} from '@angular/material/core';
     AngularFireAuthModule,
     AngularFireFunctionsModule
   ],
-  providers: [],
+  providers: [
+     // { provide: USE_AUTH_EMULATOR, useValue: environment.useEmulators ? ['localhost', 9099] : undefined },
+     // { provide: USE_FIRESTORE_EMULATOR, useValue: environment.useEmulators ? ['localhost', 8080] : undefined },
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
