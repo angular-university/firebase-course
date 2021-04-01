@@ -2,11 +2,11 @@
 
   <h3>Create New Course</h3>
 
-  <form>
+  <form [formGroup]="form">
 
     <mat-form-field appearance="outline">
 
-      <input placeholder="Course title" matInput>
+      <input placeholder="Course title" matInput formControlName="description">
 
     </mat-form-field>
 
@@ -20,7 +20,7 @@
 
     <mat-form-field appearance="outline">
 
-      <mat-select placeholder="Select category">
+      <mat-select placeholder="Select category" formControlName="category">
         <mat-option value="BEGINNER">Beginner</mat-option>
         <mat-option value="INTERMEDIATE">Intermediate</mat-option>
         <mat-option value="ADVANCED">Advanced</mat-option>
@@ -30,28 +30,30 @@
 
     <mat-form-field appearance="outline">
 
-      <input placeholder="Course url" matInput>
+      <input placeholder="Course url" matInput formControlName="url">
 
     </mat-form-field>
 
     <mat-form-field appearance="outline">
 
-      <textarea matInput placeholder="Course description"></textarea>
+      <textarea matInput placeholder="Course description"
+                formControlName="longDescription"></textarea>
 
     </mat-form-field>
 
-    <mat-slide-toggle class="promo" color="primary">
+    <mat-slide-toggle class="promo" color="primary" formControlName="promo">
       Course in promotion?
     </mat-slide-toggle>
 
     <mat-form-field appearance="outline">
       <mat-label>Promotion start date</mat-label>
-      <input matInput [matDatepicker]="promoStartPicker">
+      <input matInput [matDatepicker]="promoStartPicker" formControlName="promoStartAt">
       <mat-datepicker-toggle matSuffix [for]="promoStartPicker"></mat-datepicker-toggle>
       <mat-datepicker #promoStartPicker></mat-datepicker>
     </mat-form-field>
 
-    <button mat-raised-button color="warn">
+    <button mat-raised-button color="warn" [disabled]="!form.valid"
+        (click)="onCreateCourse()">
       Create Course
     </button>
 
