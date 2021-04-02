@@ -15,6 +15,10 @@ export class CoursesService {
 
     }
 
+    createCourse(newCourse: Partial<Course>, courseId?:string) {
+
+    }
+
     loadCoursesByCategory(category:string): Observable<Course[]> {
          return this.db.collection(
             "courses",
