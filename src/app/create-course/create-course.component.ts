@@ -41,11 +41,17 @@ export class CreateCourseComponent implements OnInit {
 
     onCreateCourse() {
 
-      const newCourse = {...this.form.value} as Course;
+        const val = this.form.value;
+
+        const newCourse: Partial<Course> = {
+            description:  val.description,
+            url: val.url,
+            longDescription: val.longDescription,
+            promo: val.promo,
+            categories: [val.category]
+        };
 
       newCourse.promoStartAt = Timestamp.fromDate(this.form.value.promoStartAt);
-
-      console.log(newCourse);
 
       this.coursesService.createCourse(newCourse, this.courseId)
           .pipe(
