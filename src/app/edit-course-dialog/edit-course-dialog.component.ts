@@ -13,7 +13,28 @@ import {Observable} from 'rxjs';
 })
 export class EditCourseDialogComponent {
 
-    constructor() {
+    form:FormGroup;
+
+    course: Course;
+
+    constructor(
+        private dialogRef: MatDialogRef<EditCourseDialogComponent>,
+        private fb: FormBuilder,
+        @Inject(MAT_DIALOG_DATA) course: Course,
+    ) {
+
+        this.course = course;
+
+        this.form = this.fb.group({
+            description: [course.description, Validators.required],
+            longDescription: [course.longDescription, Validators.required],
+            promo: [course.promo]
+        });
+
+    }
+
+    close() {
+        this.dialogRef.close();
 
     }
 }
