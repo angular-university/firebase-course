@@ -13,6 +13,8 @@ import {Lesson} from '../model/lesson';
 })
 export class CourseComponent implements OnInit {
 
+  course:Course;
+
   loading = false;
 
   displayedColumns = ['seqNo', 'description', 'duration'];
@@ -22,6 +24,8 @@ export class CourseComponent implements OnInit {
   }
 
   ngOnInit() {
+
+      this.course = this.route.snapshot.data["course"];
 
   }
 

@@ -16,6 +16,21 @@ export class CoursesService {
 
     }
 
+    findCourseByUrl(courseUrl: string): Observable<Course | null> {
+        return this.db.collection("courses",
+            ref => ref.where("url", "==", courseUrl))
+            .get()
+            .pipe(
+              map(results => {
+
+                  const courses = convertSnaps<Course>(results);
+
+                  return courses.length == 1 ? courses[0] : null;
+
+              })
+            );
+    }
+
     deleteCourseAndLessons(courseId:string) {
         return this.db.collection(`courses/${courseId}/lessons`)
             .get()
@@ -105,3 +120,11 @@ export class CoursesService {
     }
 
 }
+
+
+
+
+
+
+
+

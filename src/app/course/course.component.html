@@ -1,8 +1,8 @@
 <div class="course">
 
-    <h2></h2>
+    <h2>{{course?.description}}</h2>
 
-    <img class="course-thumbnail mat-elevation-z8">
+    <img [src]="course?.iconUrl" class="course-thumbnail mat-elevation-z8">
 
     <div class="spinner-container" *ngIf="loading">
 
