@@ -55,7 +55,7 @@ export class CoursesCardListComponent implements OnInit {
 
     onDeleteCourse(course: Course) {
 
-        this.coursesService.deleteCourse(course.id)
+        this.coursesService.deleteCourseAndLessons(course.id)
             .pipe(
                 tap(() => {
                     console.log("Deleted course", course);
