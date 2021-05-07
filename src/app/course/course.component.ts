@@ -44,7 +44,6 @@ export class CourseComponent implements OnInit {
               lessons => this.lessons = lessons
           );
 
-
   }
 
     loadMore() {
