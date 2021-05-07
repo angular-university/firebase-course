@@ -4,6 +4,7 @@ import {Course} from '../model/course';
 import {finalize, tap} from 'rxjs/operators';
 import {Observable} from 'rxjs';
 import {Lesson} from '../model/lesson';
+import {CoursesService} from "../services/courses.service";
 
 
 @Component({
@@ -19,7 +20,9 @@ export class CourseComponent implements OnInit {
 
   displayedColumns = ['seqNo', 'description', 'duration'];
 
-  constructor(private route: ActivatedRoute) {
+  constructor(
+      private route: ActivatedRoute,
+      private coursesService: CoursesService) {
 
   }
 
