@@ -5,7 +5,10 @@ import {Course} from "../model/course";
 import {concatMap, map, tap} from "rxjs/operators";
 import {convertSnaps} from "./db-utils";
 import {Lesson} from "../model/lesson";
+
+import firebase from "firebase";
 import OrderByDirection = firebase.firestore.OrderByDirection;
+
 
 @Injectable({
     providedIn: "root"
