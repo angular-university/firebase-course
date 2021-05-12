@@ -16,7 +16,6 @@ export class LoginComponent implements OnInit, OnDestroy {
 
     ui: firebaseui.auth.AuthUI;
 
-
     constructor(
         private afAuth: AngularFireAuth,
         private router: Router) {

@@ -4,6 +4,7 @@ import {from, Observable} from 'rxjs';
 import {concatMap, filter, map} from 'rxjs/operators';
 import {AngularFirestore} from '@angular/fire/firestore';
 import {Router} from '@angular/router';
+import {UserService} from "./services/user.service";
 
 @Component({
   selector: 'app-root',
@@ -12,7 +13,7 @@ import {Router} from '@angular/router';
 })
 export class AppComponent implements OnInit {
 
-  constructor() {
+  constructor(private userService: UserService) {
 
   }
 
