@@ -1,6 +1,7 @@
 import {Injectable} from "@angular/core";
 import {Observable} from "rxjs";
 import {AngularFireAuth} from "@angular/fire/auth";
+import {map} from "rxjs/operators";
 
 
 @Injectable({
@@ -16,9 +17,12 @@ export class UserService {
 
     constructor(private afAuth: AngularFireAuth) {
 
-        afAuth.idToken.subscribe(jwt => console.log("jwt", jwt));
+        this.isLoggedIn$ = afAuth.authState.pipe(map(user => !!user));
 
-        afAuth.authState.subscribe(auth => console.log("auth", auth));
+        this.isLoggedOut$ = this.isLoggedIn$.pipe(map(loggedIn => !loggedIn));
+
+        this.pictureUrl$ =
+            afAuth.authState.pipe(map(user => user? user.photoURL : null));
 
     }
 
