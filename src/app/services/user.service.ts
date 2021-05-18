@@ -2,6 +2,7 @@ import {Injectable} from "@angular/core";
 import {Observable} from "rxjs";
 import {AngularFireAuth} from "@angular/fire/auth";
 import {map} from "rxjs/operators";
+import {Router} from "@angular/router";
 
 
 @Injectable({
@@ -15,7 +16,9 @@ export class UserService {
 
     pictureUrl$: Observable<string>;
 
-    constructor(private afAuth: AngularFireAuth) {
+    constructor(
+        private afAuth: AngularFireAuth,
+        private router: Router) {
 
         this.isLoggedIn$ = afAuth.authState.pipe(map(user => !!user));
 
@@ -27,4 +30,8 @@ export class UserService {
     }
 
 
+    logout() {
+        this.afAuth.signOut();
+        this.router.navigateByUrl('/login');
+    }
 }
