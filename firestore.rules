@@ -4,12 +4,16 @@ service cloud.firestore {
 
   match /databases/{database}/documents {
 
-    match /{document=**} {
-      allow read: if true;
-      allow write: if false;
-      }
+     match /courses/{courseId} {
+
+        allow read;
+
+        match /lessons/{lessonId} {
+          allow read;
+        }
+
+     }
 
   }
-
 
 }
