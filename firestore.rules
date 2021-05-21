@@ -6,12 +6,21 @@ service cloud.firestore {
 
      match /courses/{courseId} {
 
-        allow read;
+        allow get;
+        allow list;
+
+        allow create: if false;
+        allow update: if false;
+        allow delete: if false;
 
         match /lessons/{lessonId} {
           allow read;
         }
 
+     }
+
+     match /courses/{courseId} {
+         allow list: if false;
      }
 
   }
