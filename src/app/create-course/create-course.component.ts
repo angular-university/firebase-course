@@ -22,7 +22,7 @@ export class CreateCourseComponent implements OnInit {
   form = this.fb.group({
      description:  ['', Validators.required],
       category: ["BEGINNER", Validators.required],
-      url: ['', Validators.required],
+      url: [''],
       longDescription: ['', Validators.required],
       promo: [false],
       promoStartAt: [null]
