@@ -8,6 +8,11 @@ service cloud.firestore {
         return request.auth.uid != null;
      }
 
+     function isKnownUser() {
+        return isAuthenticated() &&
+          exists(/databases/$(database)/documents/users/$(request.auth.uid));
+     }
+
      function isNonEmptyString(fieldName) {
         return request.resource.data[fieldName] is string &&
         request.resource.data[fieldName].size() > 0;
@@ -21,12 +26,12 @@ service cloud.firestore {
 
      match /courses/{courseId} {
 
-        allow read: if isAuthenticated();
+        allow read: if isKnownUser();
 
         allow write: if isValidCourse() && isAuthenticated();
 
         match /lessons/{lessonId} {
-          allow read: if isAuthenticated();
+          allow read: if isKnownUser();
         }
 
      }
