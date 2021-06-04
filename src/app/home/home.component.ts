@@ -5,6 +5,7 @@ import {catchError, map} from 'rxjs/operators';
 import {AngularFirestore} from '@angular/fire/firestore';
 import {Router} from '@angular/router';
 import {CoursesService} from "../services/courses.service";
+import {UserService} from "../services/user.service";
 
 
 @Component({
@@ -20,7 +21,8 @@ export class HomeComponent implements OnInit {
 
     constructor(
       private router: Router,
-      private coursesService: CoursesService) {
+      private coursesService: CoursesService,
+      public user: UserService) {
 
     }
 
