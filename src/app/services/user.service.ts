@@ -3,6 +3,7 @@ import {Observable} from "rxjs";
 import {AngularFireAuth} from "@angular/fire/auth";
 import {map} from "rxjs/operators";
 import {Router} from "@angular/router";
+import {UserRoles} from "../model/user-roles";
 
 
 @Injectable({
@@ -16,6 +17,8 @@ export class UserService {
 
     pictureUrl$: Observable<string>;
 
+    roles$ : Observable<UserRoles>;
+
     constructor(
         private afAuth: AngularFireAuth,
         private router: Router) {
@@ -26,6 +29,11 @@ export class UserService {
 
         this.pictureUrl$ =
             afAuth.authState.pipe(map(user => user? user.photoURL : null));
+
+        this.roles$ = this.afAuth.idTokenResult
+            .pipe(
+                map(token => <any>token?.claims ?? {admin:false})
+            )
 
     }
 
