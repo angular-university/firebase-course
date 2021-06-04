@@ -31,9 +31,19 @@ export class CreateCourseComponent implements OnInit {
   constructor(private fb:FormBuilder,
               private coursesService:CoursesService,
               private afs: AngularFirestore,
-              private router: Router) {
+              private router: Router,
+              private storage: AngularFireStorage) {
 
   }
+
+    uploadThumbnail(event) {
+
+      const file:File = event.target.files[0];
+
+      console.log(file.name);
+
+
+    }
 
   ngOnInit() {
       this.courseId = this.afs.createId();
