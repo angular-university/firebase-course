@@ -19,6 +19,9 @@ export class CreateCourseComponent implements OnInit {
 
   courseId:string;
 
+  percentageChanges$: Observable<number>;
+
+
   form = this.fb.group({
      description:  ['', Validators.required],
       category: ["BEGINNER", Validators.required],
@@ -47,6 +50,9 @@ export class CreateCourseComponent implements OnInit {
       const task = this.storage.upload(filePath, file, {
           cacheControl: "max-age=2592000,public"
       })
+
+       this.percentageChanges$ = task.percentageChanges();
+
 
         task.snapshotChanges().subscribe();
 

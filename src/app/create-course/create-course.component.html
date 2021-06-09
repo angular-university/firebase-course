@@ -18,6 +18,18 @@
 
       <input type="file" (change)="uploadThumbnail($event)">
 
+       <div class="upload-progress" *ngIf="(percentageChanges$ | async) as percentage">
+
+           <mat-progress-bar class="progress-bar"
+                             mode="determinate"
+            [value]="percentage">
+
+           </mat-progress-bar>
+
+           <span>{{percentage / 100 | percent}}</span>
+
+       </div>
+
     </div>
 
     <mat-form-field appearance="outline">
