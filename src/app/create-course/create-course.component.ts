@@ -42,6 +42,14 @@ export class CreateCourseComponent implements OnInit {
 
       console.log(file.name);
 
+      const filePath = `courses/${this.courseId}/${file.name}`;
+
+      const task = this.storage.upload(filePath, file, {
+          cacheControl: "max-age=2592000,public"
+      })
+
+        task.snapshotChanges().subscribe();
+
 
     }
 
