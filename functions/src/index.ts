@@ -1,9 +1,6 @@
 import * as functions from "firebase-functions";
 
-import {db} from "./init";
 
-import {firestore} from 'firebase-admin/lib/firestore';
-import FieldValue = firestore.FieldValue;
 
 
 
@@ -20,19 +17,11 @@ export const onAddCourseUpdatePromoCounter =
             memory: "128MB"
         })
         .firestore.document("courses/{courseId}")
-        .onCreate(async (snap, context) => {
+        .onCreate(async(snap, context) => {
 
-            functions.logger.debug(
-                `Running add course trigger for courseId ${context.params.courseId}`);
+            await (
+                await import("./promotions-counter/on-add-course"))
+                .default(snap, context);
 
-            const course = snap.data();
-
-            if (course.promo) {
-
-                return db.doc("courses/stats").update({
-                    totalPromo: FieldValue.increment(1)
-                })
-
-            }
         });
 
