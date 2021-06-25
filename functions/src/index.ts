@@ -27,3 +27,12 @@ export const onCourseUpdatedUpdatePromoCounter =
                 .default(change, context);
 
         })
+
+export const onCourseDeletedUpdatePromoCounter =
+    functions.firestore
+        .document('courses/{courseId}')
+        .onDelete(async(snap, context) => {
+            await (
+                await import("./promotions-counter/on-delete-course"))
+                .default(snap, context);
+        })
