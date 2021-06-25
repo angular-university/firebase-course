@@ -11,8 +11,24 @@ import {throwError} from 'rxjs';
 })
 export class CreateUserComponent {
 
+    form = this.fb.group({
+        email: ['', [Validators.email, Validators.required]],
+        password: ['', [Validators.required, Validators.minLength(5)]],
+        admin: [false]
+    });
 
-  constructor() {
+  constructor(
+      private fb: FormBuilder,
+      private http: HttpClient) {
+
   }
+
+    onCreateUser() {
+
+        const user = this.form.value;
+
+        console.log(user);
+
+    }
 
 }
