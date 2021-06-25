@@ -38,6 +38,7 @@ import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import {CreateUserComponent} from './create-user/create-user.component';
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {MatNativeDateModule} from '@angular/material/core';
+import {AuthInterceptor} from "./services/auth.interceptor";
 
 @NgModule({
   declarations: [
@@ -85,7 +86,12 @@ import {MatNativeDateModule} from '@angular/material/core';
   providers: [
       { provide: USE_AUTH_EMULATOR, useValue: environment.useEmulators ? ['localhost', 9099] : undefined },
       { provide: USE_FIRESTORE_EMULATOR, useValue: environment.useEmulators ? ['localhost', 8080] : undefined },
-      { provide: USE_FUNCTIONS_EMULATOR, useValue: environment.useEmulators ? ['localhost', 5001] : undefined }
+      { provide: USE_FUNCTIONS_EMULATOR, useValue: environment.useEmulators ? ['localhost', 5001] : undefined },
+      {
+          provide: HTTP_INTERCEPTORS,
+          useClass: AuthInterceptor,
+          multi: true
+      }
   ],
   bootstrap: [AppComponent]
 })
