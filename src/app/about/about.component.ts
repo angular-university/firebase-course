@@ -1,74 +1,99 @@
-import {Component, OnInit, ViewEncapsulation} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 
-import * as firebase from 'firebase/app';
+
 import 'firebase/firestore';
-import {Course} from '../model/course';
+
 import {AngularFirestore} from '@angular/fire/firestore';
-import {of} from 'rxjs';
+import {COURSES, findLessonsForCourse} from './db-data';
+import {first, take} from "rxjs/operators";
+
 
 
 @Component({
-    selector: 'about',
-    templateUrl: './about.component.html',
-    styleUrls: ['./about.component.css']
+  selector: 'about',
+  templateUrl: './about.component.html',
+  styleUrls: ['./about.component.css']
 })
-export class AboutComponent implements OnInit {
+export class AboutComponent  {
 
-    constructor(private db: AngularFirestore) {
+  constructor(private db: AngularFirestore) {}
+
+  async uploadData() {
+    const coursesCollection = this.db.collection('courses');
+    const courses = await this.db.collection('courses').get();
+    for (let course of Object.values(COURSES)) {
+      const newCourse = this.removeId(course);
+      const courseRef = await coursesCollection.add(newCourse);
+      const lessons = await courseRef.collection('lessons');
+      const courseLessons = findLessonsForCourse(course['id']);
+      console.log(`Uploading course ${course['description']}`);
+      for (const lesson of courseLessons) {
+        const newLesson = this.removeId(lesson);
+        delete newLesson.courseId;
+        await lessons.add(newLesson);
+      }
+    }
+  }
+
+  removeId(data: any) {
+    const newData: any = {...data};
+    delete newData.id;
+    return newData;
+  }
+
+
+    onReadDoc() {
+
+      this.db.doc("courses/1CErZJychQ4KET9Yi96K")
+          .valueChanges()
+          .subscribe(course => {
+
+              console.log(course);
+
+          });
 
     }
 
-    ngOnInit() {
+    onReadCollection() {
+      this.db.collection(
+          "courses",
+          ref => ref.where("seqNo", "<=", 20)
+              .where("url", "==", "angular-forms-course")
+              .orderBy("seqNo")
+      ).get()
+          .subscribe(snaps => {
 
+              snaps.forEach(snap => {
 
-    }
+                  console.log(snap.id);
+                  console.log(snap.data());
 
-    save() {
+              })
 
-        const firebaseCourseRef =
-            this.db.doc('/courses/JVXlcA6ph98c7Vg2nc4E').ref;
-
-        const rxjsCourseRef =
-            this.db.doc('/courses/MsU0Mz7pNSbnhzYSkt9y').ref;
-
-        const batch = this.db.firestore.batch();
-
-        batch.update(firebaseCourseRef, {titles: {description:'Firebase Course'}});
-
-        batch.update(rxjsCourseRef, {titles: {description:'RxJs Course'}});
-
-        const batch$ = of(batch.commit());
-
-        batch$.subscribe();
+          });
 
     }
 
-    async runTransaction() {
+    onReadCollectionGroup() {
 
-        const newCounter = await this.db.firestore
-            .runTransaction(async transaction => {
+      this.db.collectionGroup("lessons",
+          ref => ref.where("seqNo", "==", 1) )
+          .get()
+          .subscribe(snaps => {
 
-            console.log('Running transaction...');
+              snaps.forEach(snap => {
 
-            const courseRef = this.db.doc('/courses/JVXlcA6ph98c7Vg2nc4E').ref;
+                  console.log(snap.id);
+                  console.log(snap.data());
 
-            const snap = await transaction.get(courseRef);
+              })
 
-            const course = <Course> snap.data();
-
-            const lessonsCount =  course.lessonsCount + 1;
-
-            transaction.update(courseRef, {lessonsCount});
-
-            return lessonsCount;
-
-        });
-
-        console.log("result lessons count = ",newCounter);
+          });
 
     }
-
 }
+
+
 
 
 

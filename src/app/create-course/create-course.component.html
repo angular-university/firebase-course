@@ -1,0 +1,80 @@
+<div class="create-course">
+
+  <h3>Create New Course</h3>
+
+  <form [formGroup]="form">
+
+    <mat-form-field appearance="outline">
+
+      <input placeholder="Course title" matInput formControlName="description">
+
+    </mat-form-field>
+
+    <div class="course-image-upload">
+
+      <span>Course thumbnail:</span>
+
+      <img class="course-thumbnail mat-elevation-z3"
+           [src]="iconUrl"
+           *ngIf="iconUrl">
+
+      <input type="file" (change)="uploadThumbnail($event)">
+
+       <div class="upload-progress" *ngIf="(percentageChanges$ | async) as percentage">
+
+           <mat-progress-bar class="progress-bar"
+                             mode="determinate"
+            [value]="percentage">
+
+           </mat-progress-bar>
+
+           <span>{{percentage / 100 | percent}}</span>
+
+       </div>
+
+    </div>
+
+    <mat-form-field appearance="outline">
+
+      <mat-select placeholder="Select category" formControlName="category">
+        <mat-option value="BEGINNER">Beginner</mat-option>
+        <mat-option value="INTERMEDIATE">Intermediate</mat-option>
+        <mat-option value="ADVANCED">Advanced</mat-option>
+      </mat-select>
+
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+
+      <input placeholder="Course url" matInput formControlName="url">
+
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+
+      <textarea matInput placeholder="Course description"
+                formControlName="longDescription"></textarea>
+
+    </mat-form-field>
+
+    <mat-slide-toggle class="promo" color="primary" formControlName="promo">
+      Course in promotion?
+    </mat-slide-toggle>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Promotion start date</mat-label>
+      <input matInput [matDatepicker]="promoStartPicker" formControlName="promoStartAt">
+      <mat-datepicker-toggle matSuffix [for]="promoStartPicker"></mat-datepicker-toggle>
+      <mat-datepicker #promoStartPicker></mat-datepicker>
+    </mat-form-field>
+
+    <button mat-raised-button color="warn" [disabled]="!form.valid"
+        (click)="onCreateCourse()">
+      Create Course
+    </button>
+
+  </form>
+
+</div>
+
+

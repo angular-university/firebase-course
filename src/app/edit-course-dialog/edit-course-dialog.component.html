@@ -1,0 +1,39 @@
+
+<h2 mat-dialog-title>Edit Course</h2>
+
+<mat-dialog-content [formGroup]="form">
+
+    <mat-form-field>
+
+        <input matInput
+                placeholder=" Title" formControlName="description">
+
+    </mat-form-field>
+
+  <mat-slide-toggle class="promo" color="primary" formControlName="promo">
+    Course in promotion?
+  </mat-slide-toggle>
+
+    <mat-form-field>
+
+        <textarea matInput placeholder="Description" formControlName="longDescription">
+
+        </textarea>
+
+    </mat-form-field>
+
+</mat-dialog-content>
+
+<mat-dialog-actions>
+
+    <button mat-raised-button (click)="close()">
+        Close
+    </button>
+
+    <button mat-raised-button color="primary" (click)="save()">
+        Save
+    </button>
+
+</mat-dialog-actions>
+
+

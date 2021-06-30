@@ -1,30 +1,43 @@
-import * as functions from 'firebase-functions';
-import {db} from './init';
+import * as functions from "firebase-functions";
+import {createUserApp} from "./create-user";
+
+//
+// Start writing Firebase Functions
+// https://firebase.google.com/docs/functions/typescript
+//
 
 
-import * as express from "express";
-const cors = require('cors');
-
-const app = express();
-
-app.use(cors({origin:true}));
+export const createUser = functions.https.onRequest(createUserApp);
 
 
-app.get('/courses', async (request, response) => {
+export const onAddCourseUpdatePromoCounter =
+    functions
+        .runWith({
+            timeoutSeconds: 300,
+            memory: "128MB"
+        })
+        .firestore.document("courses/{courseId}")
+        .onCreate(async(snap, context) => {
+            await (
+                await import("./promotions-counter/on-add-course"))
+                .default(snap, context);
+        });
 
-    const snaps = await db.collection('courses').get();
 
-    const courses:any[] = [];
+export const onCourseUpdatedUpdatePromoCounter =
+    functions.firestore
+        .document('courses/{courseId}')
+        .onUpdate(async (change, context) => {
+            await (await import('./promotions-counter/on-course-updated'))
+                .default(change, context);
 
-    snaps.forEach(snap => courses.push(snap.data()));
+        })
 
-    response.status(200).json({courses});
-
-});
-
-
-export const getCourses = functions.https.onRequest(app);
-
-export {onAddLesson, onDeleteLesson} from './lessons-counter';
-
-export {resizeThumbnail} from './image-upload';
+export const onCourseDeletedUpdatePromoCounter =
+    functions.firestore
+        .document('courses/{courseId}')
+        .onDelete(async(snap, context) => {
+            await (
+                await import("./promotions-counter/on-delete-course"))
+                .default(snap, context);
+        })

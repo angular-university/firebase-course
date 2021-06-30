@@ -1,14 +1,33 @@
 
 <div class="courses-panel">
 
-    <h3>All Courses</h3>
+    <div class="header">
+
+        <h2 class="title">All Courses</h2>
+
+        <ng-container *ngIf="(user.roles$ | async) as roles">
+
+            <ng-container *ngIf="roles.admin">
+
+                <button mat-mini-fab color="accent" routerLink="/create-course">
+                    <mat-icon class="add-course-btn">add</mat-icon>
+                </button>
+
+            </ng-container>
+
+        </ng-container>
+
+
+
+    </div>
 
     <mat-tab-group>
 
         <mat-tab label="Beginners">
 
-            <courses-card-list (courseEdited)="reloadCourses()"
-                    [courses]="beginnersCourses$ | async">
+            <courses-card-list [courses]="beginnersCourses$ | async"
+                (courseEdited)="reloadCourses()"
+                (courseDeleted)="reloadCourses()">
 
             </courses-card-list>
 
@@ -16,16 +35,15 @@
 
         <mat-tab label="Advanced">
 
-            <courses-card-list (courseEdited)="reloadCourses()"
-                    [courses]="advancedCourses$ | async"
+            <courses-card-list [courses]="advancedCourses$ | async"
+                               (courseEdited)="reloadCourses()"
+                               (courseDeleted)="reloadCourses()">
 
-            ></courses-card-list>
+            </courses-card-list>
 
         </mat-tab>
 
     </mat-tab-group>
-
-
 
 </div>
 

@@ -2,6 +2,17 @@
 
 .courses-panel {
     max-width: 400px;
-    margin: 0 auto;
+    margin: 20px auto 0 auto;
 }
 
+
+.header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.title {
+    text-align: center;
+    margin-right: 15px;
+}

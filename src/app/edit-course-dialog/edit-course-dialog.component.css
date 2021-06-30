@@ -1,0 +1,19 @@
+
+
+.mat-form-field {
+    display: block;
+}
+
+.promo {
+  margin-bottom: 20px;
+}
+
+textarea {
+    height: 100px;
+    resize: vertical;
+}
+
+mat-dialog-actions {
+  display: flex;
+  justify-content: flex-end;
+}

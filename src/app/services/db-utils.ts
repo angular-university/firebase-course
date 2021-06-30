@@ -1,12 +1,11 @@
 
 
-
-export function convertSnaps<T>(snaps) {
-    return <T[]>snaps.map(snap => {
+export function convertSnaps<T>(results)  {
+    return <T[]> results.docs.map(snap => {
         return {
-            id: snap.payload.doc.id,
-            ...snap.payload.doc.data()
-        };
+            id: snap.id,
+            ...<any>snap.data()
+        }
+    })
 
-    });
 }
