@@ -85,7 +85,8 @@ export class CreateCourseComponent implements OnInit {
             url: val.url,
             longDescription: val.longDescription,
             promo: val.promo,
-            categories: [val.category]
+            categories: [val.category],
+            iconUrl: this.iconUrl
         };
 
         newCourse.promoStartAt = Timestamp.fromDate(this.form.value.promoStartAt);
