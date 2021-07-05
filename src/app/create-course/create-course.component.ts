@@ -85,12 +85,15 @@ export class CreateCourseComponent implements OnInit {
             url: val.url,
             longDescription: val.longDescription,
             promo: val.promo,
-            categories: [val.category],
-            iconUrl: this.iconUrl
+            categories: [val.category]
         };
 
         newCourse.promoStartAt = Timestamp.fromDate(this.form.value.promoStartAt);
-
+        
+        if (this.iconUrl) {
+          newCourse.iconUrl = this.iconUrl;
+        }
+        
         this.coursesService.createCourse(newCourse, this.courseId)
             .pipe(
                 tap(course => {
