@@ -1,7 +1,7 @@
 
 ## Firebase & AngularFire In Depth 
 
-This repository currently contains the code for the [Firebase & AngularFire In Depth](https://angular-university.io/course/angularfire-course):
+This repository currently contains the code for the [Firebase & AngularFire In Depth](https://angular-university.io/course/international-app):
 
 ![Firebase & AngularFire In Depth](https://angular-university.s3-us-west-1.amazonaws.com/course-images/firebase-course-1.jpg)
 
