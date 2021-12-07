@@ -3,7 +3,7 @@
 
 This repository currently contains the code for the [Firebase & AngularFire In Depth](https://angular-university.io/course/angularfire-course).
 
-This course is updated to Angular 12:
+This course is updated to Angular 13:
 
 ![Firebase & AngularFire In Depth](https://angular-university.s3-us-west-1.amazonaws.com/course-images/firebase-course-1.jpg)
 
@@ -15,7 +15,7 @@ This master branch contains the *final version of the course code*, that you can
 
 # Installation pre-requisites
 
-IMPORTANT: Please use Node 14 LST (Long Term Support version).
+IMPORTANT: Please use Node 16 LST (Long Term Support version).
 
 # Installing the Angular CLI
 
