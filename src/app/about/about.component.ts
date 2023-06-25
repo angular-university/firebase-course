@@ -40,7 +40,40 @@ export class AboutComponent {
         return newData;
     }
 
+    onReadDoc() {
+        this.db.doc("/courses/3StNAuxfHp0d5WXcwJxQ")
+        .snapshotChanges()
+        .subscribe(snap => {
 
+            console.log(snap.payload.id);
+            console.log(snap.payload.data());
+        });
+    }
+    onReadCollection() {
+        this.db.collection("courses",
+        ref => ref.where("seqNo", "<=", 20)
+        .where("url", "==", "angular-forms-course")
+        .orderBy("seqNo")).get().subscribe(snaps => {
+            
+            snaps.forEach(snap=> {
+                console.log(snap.id);
+                console.log(snap.data());
+
+            })
+
+        });
+    }
+    onReadCollectiongroup() {
+        this.db.collectionGroup("lessons",
+        ref => ref.where("seqNo", "==", 1) )
+        .get()
+        .subscribe(snaps => {
+            snaps.forEach(snap =>  {
+                console.log(snap.id);
+                console.log(snap.data());
+            })
+        });
+    }
 }
 
 
