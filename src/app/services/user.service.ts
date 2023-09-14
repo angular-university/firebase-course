@@ -1,6 +1,6 @@
 import {Injectable} from "@angular/core";
 import {Observable} from "rxjs";
-import {AngularFireAuth} from "@angular/fire/auth";
+import {AngularFireAuth} from "@angular/fire/compat/auth";
 import {map} from "rxjs/operators";
 import {Router} from "@angular/router";
 import {UserRoles} from "../model/user-roles";
