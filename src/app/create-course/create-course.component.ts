@@ -89,7 +89,11 @@ export class CreateCourseComponent implements OnInit {
         };
 
         newCourse.promoStartAt = Timestamp.fromDate(this.form.value.promoStartAt);
-
+        
+        if (this.iconUrl) {
+          newCourse.iconUrl = this.iconUrl;
+        }
+        
         this.coursesService.createCourse(newCourse, this.courseId)
             .pipe(
                 tap(course => {
