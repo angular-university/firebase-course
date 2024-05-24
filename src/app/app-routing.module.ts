@@ -5,8 +5,7 @@ import {AboutComponent} from './about/about.component';
 import {CourseComponent} from './course/course.component';
 import {LoginComponent} from './login/login.component';
 import {CreateCourseComponent} from './create-course/create-course.component';
-import {AngularFireAuthGuard, customClaims, hasCustomClaim, redirectUnauthorizedTo}
-    from '@angular/fire/auth-guard';
+import {AngularFireAuthGuard, customClaims, hasCustomClaim, redirectUnauthorizedTo} from '@angular/fire/compat/auth-guard';
 import {CreateUserComponent} from './create-user/create-user.component';
 import {CourseResolver} from "./services/course.resolver";
 import {pipe} from "rxjs";
