@@ -3,7 +3,7 @@ import {Component, OnInit} from '@angular/core';
 
 import 'firebase/firestore';
 
-import {AngularFirestore} from '@angular/fire/firestore';
+import {AngularFirestore} from '@angular/fire/compat/firestore';
 import {COURSES, findLessonsForCourse} from './db-data';
 import {first, take} from "rxjs/operators";
 

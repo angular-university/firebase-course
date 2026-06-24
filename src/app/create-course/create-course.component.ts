@@ -1,15 +1,16 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {AngularFirestore} from '@angular/fire/firestore';
+import {AngularFirestore} from '@angular/fire/compat/firestore';
 import {Course} from '../model/course';
 import {catchError, concatMap, last, map, take, tap} from 'rxjs/operators';
 import {from, Observable, throwError} from 'rxjs';
 import {Router} from '@angular/router';
-import {AngularFireStorage} from '@angular/fire/storage';
-import firebase from 'firebase/app';
-import Timestamp = firebase.firestore.Timestamp;
+import {AngularFireStorage} from '@angular/fire/compat/storage';
+import firebase from 'firebase/compat/app';
+import { Timestamp } from 'firebase/firestore';
 import {CoursesService} from "../services/courses.service";
 
+// Now you can use Timestamp as follows:
 @Component({
     selector: 'create-course',
     templateUrl: 'create-course.component.html',
@@ -22,7 +23,6 @@ export class CreateCourseComponent implements OnInit {
     percentageChanges$: Observable<number>;
 
     iconUrl:string;
-
 
     form = this.fb.group({
         description: ['', Validators.required],
